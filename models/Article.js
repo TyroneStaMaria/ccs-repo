@@ -22,6 +22,22 @@ const Article = new Schema({
   articleFile: {
     type: Buffer,
   },
+  publicationDate: {
+    type: Date,
+  },
+  topics: {
+    type: Array,
+    required: true,
+  },
+  keywords: {
+    type: Array,
+    required: true,
+  },
+  featured: {
+    type: Boolean,
+    default: false,
+  },
+
   approved: {
     type: Boolean,
     default: false,
