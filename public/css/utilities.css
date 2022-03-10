@@ -1,0 +1,113 @@
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.container {
+  padding: 96px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* background colors */
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-dark-1 {
+  background-color: var(--color-dark-1);
+}
+
+.bg-dark-2 {
+  background-color: var(--color-dark-2);
+}
+
+.bg-gray {
+  background-color: var(--color-gray);
+}
+
+.bg-white {
+  background-color: var(--color-white);
+}
+
+/* text colors */
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-dark-1 {
+  color: var(--color-dark-1);
+}
+
+.text-dark-2 {
+  color: var(--color-dark-2);
+}
+
+.text-gray {
+  color: var(--color-gray);
+}
+
+.text-white {
+  color: var(--color-white);
+}
+
+/* typography */
+.font-heading {
+  font-family: var(--font-family-heading);
+}
+
+.font-body {
+  font-family: var(--font-family-body);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-xxl {
+  font-size: var(--font-size-xxl);
+}
+
+.text-xl {
+  font-size: var(--font-size-xl);
+}
+
+.text-large {
+  font-size: var(--font-size-large);
+}
+
+.h1 {
+  font-size: var(--font-size-h1);
+}
+
+.h2 {
+  font-size: var(--font-size-h2);
+}
+
+.h3 {
+  font-size: var(--font-size-h3);
+}
+
+.h4 {
+  font-size: var(--font-size-h4);
+}
+
+.h5 {
+  font-size: var(--font-size-h5);
+}
+
+.text-body {
+  font-size: var(--font-size-base);
+}
+
+.text-small {
+  font-size: var(--font-size-small);
+}
+
+@media screen and (max-width: 1279px) {
+  .container {
+    max-width: 90%;
+  }
+}
