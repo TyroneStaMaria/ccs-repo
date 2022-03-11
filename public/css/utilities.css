@@ -130,13 +130,13 @@
   display: block;
   text-align: center;
   min-width: 120px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 8px 24px;
   border-radius: 8px;
   text-decoration: none;
   box-shadow: 4px 11px 30px -3px rgba(201, 201, 201, 0.74);
   -webkit-box-shadow: 4px 11px 30px -3px rgba(201, 201, 201, 0.74);
   -moz-box-shadow: 4px 11px 30px -3px rgba(201, 201, 201, 0.74);
+  transition: all ease-in-out 300ms;
 }
 .button:hover {
   background-color: #269779;
