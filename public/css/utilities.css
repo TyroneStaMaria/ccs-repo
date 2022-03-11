@@ -4,7 +4,6 @@
 }
 
 .container {
-  padding: 96px 0;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -110,4 +109,40 @@
   .container {
     max-width: 90%;
   }
+}
+
+:root,
+.button {
+  --color-background: var(--color-primary);
+  --color-text: var(--color-white);
+}
+
+.button-outline {
+  --color-background: var(--color-white);
+  --color-text: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.button {
+  background-color: var(--color-background);
+  color: var(--color-text);
+
+  display: block;
+  text-align: center;
+  min-width: 120px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 4px 11px 30px -3px rgba(201, 201, 201, 0.74);
+  -webkit-box-shadow: 4px 11px 30px -3px rgba(201, 201, 201, 0.74);
+  -moz-box-shadow: 4px 11px 30px -3px rgba(201, 201, 201, 0.74);
+}
+.button:hover {
+  background-color: #269779;
+}
+
+.button.button-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
