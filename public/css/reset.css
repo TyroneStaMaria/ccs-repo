@@ -64,6 +64,11 @@ a:hover:not(.button) {
   color: var(--color-primary);
 }
 
+button {
+  border: none;
+  cursor: pointer;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
