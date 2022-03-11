@@ -12,7 +12,8 @@ h4,
 h5,
 p,
 figure,
-picture {
+picture,
+ul {
   margin: 0;
 }
 
@@ -23,12 +24,14 @@ h4,
 h5 {
   font-family: var(--font-family-heading);
   font-weight: bold;
+  color: var(--color-dark-1);
 }
 
 p,
 small {
   font-family: var(--font-family-body);
   font-weight: 400;
+  color: var(--color-dark-2);
 }
 
 body {
@@ -49,6 +52,11 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-dark-2);
 }
 
 @media (prefers-reduced-motion: reduce) {
