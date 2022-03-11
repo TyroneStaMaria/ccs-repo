@@ -12,7 +12,6 @@ nav {
 }
 
 .nav-items {
-  margin-left: auto;
   align-items: center;
 }
 
@@ -22,6 +21,15 @@ nav {
 
 .mobile-nav-toggle {
   display: none;
+}
+
+.nav-search {
+  width: 45%;
+  margin: 0 auto;
+}
+
+.nav-search > input {
+  width: 100%;
 }
 
 @media screen and (max-width: 749px) {
