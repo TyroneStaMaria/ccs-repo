@@ -2,9 +2,24 @@
 <nav>
   <div class="nav-container container flex">
     <h1 class="nav-logo">CCS Research</h1>
+    <button type="button" class="mobile-nav-toggle">
+      <svg viewBox="0 0 100 80" width="40" height="40">
+        <rect width="100" height="20"></rect>
+        <rect y="30" width="100" height="20"></rect>
+        <rect y="60" width="100" height="20"></rect>
+      </svg>
+    </button>
     <ul class="flex nav-items">
       <li><a href="#"> Home</a></li>
       <li><a href="#"> Articles</a></li>
+      <li><a class="button button-outline" href="#">Register</a></li>
+      <li><a class="button" href="#">Log-in</a></li>
     </ul>
   </div>
 </nav>
+<script>
+  window.addEventListener("DOMContentLoaded", (event)=> { const button =
+  document.querySelector(".mobile-nav-toggle"); button.addEventListener("click",
+  (event) => { const navItems = document.querySelector(".nav-items");
+  navItems.classList.toggle("nav-show"); }) })
+</script>
