@@ -28,6 +28,11 @@
   margin: 20px 0;
   max-width: 70%;
 }
+
+.article-list > div:not(:first-child) {
+  margin-top: 12px;
+}
+
 @media screen and (max-width: 749px) {
   .hero-section {
     overflow: auto;
