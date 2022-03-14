@@ -13,3 +13,6 @@
 .article-item--heading {
   color: var(--color-primary);
 }
+.article-list > div:not(:first-child) {
+  margin-top: 12px;
+}
