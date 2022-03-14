@@ -1,0 +1,28 @@
+.form__card {
+  max-width: 450px;
+  width: 100%;
+  margin: auto;
+  box-shadow: 3px 4px 7px 2px rgba(8, 8, 9, 0.2);
+  padding: 48px;
+  border-radius: 5px;
+}
+
+.form__card > h1 {
+  text-align: center;
+  color: var(--color-primary);
+}
+
+.form__items {
+  flex-direction: column;
+}
+
+.form__input {
+  padding: 8px;
+  border: 1px solid #9b9b9b;
+  outline: none;
+  border-radius: 5px;
+}
+
+.form__input:focus {
+  border-color: var(--color-primary);
+}
