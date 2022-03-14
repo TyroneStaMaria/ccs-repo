@@ -39,7 +39,7 @@ nav {
 }
 
 @media screen and (max-width: 749px) {
-  .nav-items {
+  .nav__items {
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
@@ -51,17 +51,17 @@ nav {
     z-index: 30;
     transition: all ease-in-out 300ms;
   }
-  .mobile-nav-toggle {
+  .mobile-nav__toggle {
     display: block;
     border: none;
     background: none;
     margin-left: auto;
   }
-  .mobile-nav-toggle > svg > rect {
+  .mobile-nav__toggle > svg > rect {
     fill: var(--color-primary);
   }
 }
 
-.nav-show {
+.nav__items--show {
   left: 0;
 }
