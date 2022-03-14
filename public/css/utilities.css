@@ -110,6 +110,10 @@ h5 {
   font-size: var(--font-size-small);
 }
 
+section.padded {
+  padding: 96px 0;
+}
+
 @media screen and (max-width: 1279px) {
   .container {
     max-width: 90%;
