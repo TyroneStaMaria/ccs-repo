@@ -2,7 +2,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const path = require("path");
 const app = express();
-
+const viewRoutes = require("./routes/view-routes");
 const hbs = exphbs.create({
   extname: "hbs",
   defaultLayout: "main",
@@ -21,10 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "hbs");
 app.engine("hbs", hbs.engine);
 
-app.get("/", (req, res) => {
-  res.render("index", { title: "Home" });
-});
-
 app.use(express.static("public"));
+
+app.use(viewRoutes);
 
 module.exports = app;
