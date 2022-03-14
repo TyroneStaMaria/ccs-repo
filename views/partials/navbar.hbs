@@ -2,19 +2,21 @@
 <nav>
   <div class="nav-container container flex">
     <h1 class="nav-logo h2">CCS Research</h1>
-    <div class="nav-search">
-      <input type="text" placeholder="Search Articles" />
-    </div>
+    {{#unless isArticle}}
+      <div class="nav-search">
+        <input type="text" placeholder="Search Articles" />
+      </div>
+    {{/unless}}
     <button type="button" class="mobile-nav-toggle">
       <svg viewBox="0 0 100 80" width="40" height="40">
-        <rect width="100" height="20"></rect>
-        <rect y="30" width="100" height="20"></rect>
-        <rect y="60" width="100" height="20"></rect>
+        <rect width="100" height="10"></rect>
+        <rect y="30" width="100" height="10"></rect>
+        <rect y="60" width="100" height="10"></rect>
       </svg>
     </button>
     <ul class="flex nav-items">
-      <li><a href="#"> Home</a></li>
-      <li><a href="#"> Articles</a></li>
+      <li><a href="/"> Home</a></li>
+      <li><a href="/articles"> Articles</a></li>
       <li><a class="button button-outline" href="#">Register</a></li>
       <li><a class="button" href="#">Log-in</a></li>
     </ul>
