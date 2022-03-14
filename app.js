@@ -8,6 +8,11 @@ const hbs = exphbs.create({
   defaultLayout: "main",
   layoutsDir: path.join(__dirname, "/views/layouts"),
   partialsDir: path.join(__dirname, "/views/partials"),
+  helpers: {
+    parseJSON: (data, options) => {
+      return options.fn(JSON.parse(data));
+    },
+  },
 });
 
 app.use(express.json());
