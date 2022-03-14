@@ -5,7 +5,8 @@ nav {
   box-shadow: -1px 4px 15px 3px rgba(240, 240, 240, 0.75);
   -webkit-box-shadow: -1px 4px 15px 3px rgba(240, 240, 240, 0.75);
   -moz-box-shadow: -1px 4px 15px 3px rgba(240, 240, 240, 0.75);
-  position: fixed;
+  position: sticky;
+  top: 0;
   width: 100%;
   background-color: var(--color-white);
   z-index: 10;
@@ -17,6 +18,7 @@ nav {
 
 .nav-items {
   align-items: center;
+  margin-left: auto;
 }
 
 .nav-logo {
