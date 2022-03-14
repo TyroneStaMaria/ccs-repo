@@ -3,13 +3,13 @@
   padding-bottom: 24px;
 }
 
-.search-section > input {
+.search-section > .search-section__input {
   display: block;
   margin: 0 auto;
   width: 30%;
 }
 
-.filter-box {
+.filter__box {
   border: 1px solid #e8e8e8;
   box-sizing: border-box;
   border-radius: 5px;
@@ -17,7 +17,7 @@
   padding: 30px 35px;
 }
 
-.filter-box > fieldset {
+.filter__box > fieldset {
   border: none;
   display: flex;
   flex-direction: column;
