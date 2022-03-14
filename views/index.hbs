@@ -1,15 +1,15 @@
 <link rel="stylesheet" href="css/home.css" />
 <section class="hero-section">
   <div class="bg-rect"></div>
-  <div class="hero-content container flex">
-    <div class="hero-info">
+  <div class="hero-section__content container flex">
+    <div class="hero-section__info">
       <h1 class="h1">COLLEGE OF COMPUTER STUDIES RESEARCH REPOSITORY</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </p>
       <button class="button">See Featured Articles</button>
     </div>
-    <div class="hero-image">
+    <div class="hero-section__image">
       <img src="/images/hero-image.svg" alt="Hero Image" />
     </div>
   </div>
@@ -17,7 +17,7 @@
 <section style="padding: 96px 0;">
   <div class="container">
     <h2 class="h2">Featured Human Computer Interaction Articles</h2>
-    <div class="article-list">
+    <div class="article__list">
       {{#parseJSON '{"title": "Supporting Novice Programmer DevOps Integration", "authors": "Tyrone Justin R. Sta. Maria, Gavin Raine Dizon, Vince Anthony Esquivel, Jordan Aiko Deja and Unisse Chua", "abstract": "DevOps is usually an industry approach that is practiced by seasoned and experienced programmers and developers. In most university settings especially in the Philippine context, DevOps is not usually part of the curriculum and in some cases are only introduced to learner programmers as an elective  as bonus material."}' }}
         {{>article-item}}
       {{/parseJSON}}

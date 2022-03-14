@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
 }
-.hero-content {
+.hero-section__content {
   height: 100%;
   align-items: center;
 }
@@ -19,12 +19,12 @@
   overflow: hidden;
 }
 
-.hero-info > h1 {
+.hero-section__info > h1 {
   color: var(--color-primary);
   line-height: 1.3;
 }
 
-.hero-info > p {
+.hero-section__info > p {
   margin: 20px 0;
   max-width: 70%;
 }
@@ -36,14 +36,14 @@
     padding-bottom: 128px;
   }
 
-  .hero-content {
+  .hero-section__content {
     flex-direction: column;
   }
 
-  .hero-image {
+  .hero-section__image {
     order: 1;
   }
-  .hero-info {
+  .hero-section__info {
     order: 2;
   }
 
