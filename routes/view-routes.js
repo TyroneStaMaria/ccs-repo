@@ -1,8 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  return res.render("index", { title: "Home" });
+const Article = require("../models/Article");
+
+router.get("/", async (req, res) => {
+  const articles = await Article.find({ featured: true }).lean();
+  return res.render("index", {
+    title: "Home",
+    articles: articles,
+  });
 });
 
 router.get("/articles", (req, res) => {

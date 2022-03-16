@@ -1,6 +1,10 @@
 <div class="article">
-  <h3 class="article__heading">{{title}}</h3>
-  <small class="article__authors">{{authors}}</small>
+  <h3 class="article__heading">{{this.title}}</h3>
+  <small class="article__authors">
+    {{#each authors}}
+      {{this.name}},
+    {{/each}}
+  </small>
   <p class="article__abstract">{{abstract}}</p>
   <div>
     <span>Save</span>
