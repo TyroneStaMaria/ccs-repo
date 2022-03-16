@@ -7,40 +7,21 @@ async function getArticles(req, res) {
     console.log(err);
   }
 }
-
-async function test(req, res) {
-  res.send({
-    articles: {
-      title: "Test Paper 2",
-      abstract: "Lorem ipsum hello hello hello bla ",
-      authors: [
-        {
-          name: "ABC",
-          affiliations: ["DLSU"],
-        },
-        {
-          name: "Gavin Raine Dizon",
-          affiliations: ["DLSU"],
-        },
-        {
-          name: "Vince Anthony Esquivel",
-          affiliations: ["DLSU"],
-        },
-        {
-          name: "Jordan Aiko Deja",
-          affiliations: ["DLSU"],
-        },
-        {
-          name: "Unisse Chua",
-          affiliations: ["DLSU"],
-        },
-      ],
-      topics: ["HCI", "DevOps"],
-      keywords: ["Programming", "Novice"],
-      featured: true,
-      approved: true,
-    },
-  });
+async function searchArticles(req, res) {
+  try {
+    const { q } = req.query;
+    console.log(req.query);
+    const articles = await Article.find({
+      title: { $regex: new RegExp(q, "i") },
+    }).lean();
+    return res.render("articles", {
+      title: "Articles",
+      articles: articles,
+      isArticle: true,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-module.exports = { getArticles, test };
+module.exports = { getArticles, searchArticles };

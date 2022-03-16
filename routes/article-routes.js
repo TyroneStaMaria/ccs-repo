@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getArticles, test } = require("../controllers/article-controller");
+const { getArticles, searchArticles } = require("../controllers/article-controller");
 router.get("/get-articles", getArticles);
-router.get("/search", test);
+router.get("/search", searchArticles);
 module.exports = router;
