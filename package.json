@@ -4,7 +4,8 @@
   "description": "Research Paper Repository for DLSU College of Computer Studies",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server"
   },
   "author": "Tyrone Sta. Maria",
   "license": "ISC",
