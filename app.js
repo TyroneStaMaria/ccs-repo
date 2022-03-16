@@ -27,5 +27,5 @@ app.engine("hbs", hbs.engine);
 app.use(express.static("public"));
 
 app.use(viewRoutes);
-app.use(`${API_ROUTE}/articles`, articleRoutes);
+app.use("/articles", articleRoutes);
 module.exports = app;
