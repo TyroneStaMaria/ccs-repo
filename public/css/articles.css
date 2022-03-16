@@ -3,7 +3,7 @@
   padding-bottom: 24px;
 }
 
-.search-section > .search-section__input {
+.search-section .search-section__input {
   display: block;
   margin: 0 auto;
   width: 30%;
