@@ -13,7 +13,8 @@ h5,
 p,
 figure,
 picture,
-ul {
+ul,
+form {
   margin: 0;
 }
 
