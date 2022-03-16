@@ -1,6 +1,8 @@
-<link rel="stylesheet" href="css/articles.css" />
+<link rel="stylesheet" href="/css/articles.css" />
 <section class="search-section bg-gray">
-  <input class="search-section__input" type="text" placeholder="Search" />
+  <form name="search" action="/articles/search" method="GET">
+      <input class="search-section__input" type="text" placeholder="Search" name="q" />
+  </form>
 </section>
 
 <section class="padded">
@@ -9,7 +11,7 @@
       <h4>Filter By:</h4>
       <div class="filter__box">
         <h4>Year</h4>
-        <fieldset>
+        <fieldset form="search" name="year">
           <div>
             <input type="checkbox" name="2022" id="2022" />
             <label for="2022">2022</label>
@@ -30,24 +32,9 @@
       </div>
     </div>
     <div class="article__list">
-      {{#parseJSON '{"title": "Supporting Novice Programmer DevOps Integration", "authors": "Tyrone Justin R. Sta. Maria, Gavin Raine Dizon, Vince Anthony Esquivel, Jordan Aiko Deja and Unisse Chua", "abstract": "DevOps is usually an industry approach that is practiced by seasoned and experienced programmers and developers. In most university settings especially in the Philippine context, DevOps is not usually part of the curriculum and in some cases are only introduced to learner programmers as an elective  as bonus material."}' }}
+      {{#each articles}}
         {{>article-item}}
-      {{/parseJSON}}
-       {{#parseJSON '{"title": "Supporting Novice Programmer DevOps Integration", "authors": "Tyrone Justin R. Sta. Maria, Gavin Raine Dizon, Vince Anthony Esquivel, Jordan Aiko Deja and Unisse Chua", "abstract": "DevOps is usually an industry approach that is practiced by seasoned and experienced programmers and developers. In most university settings especially in the Philippine context, DevOps is not usually part of the curriculum and in some cases are only introduced to learner programmers as an elective  as bonus material."}' }}
-        {{>article-item}}
-      {{/parseJSON}}
-       {{#parseJSON '{"title": "Supporting Novice Programmer DevOps Integration", "authors": "Tyrone Justin R. Sta. Maria, Gavin Raine Dizon, Vince Anthony Esquivel, Jordan Aiko Deja and Unisse Chua", "abstract": "DevOps is usually an industry approach that is practiced by seasoned and experienced programmers and developers. In most university settings especially in the Philippine context, DevOps is not usually part of the curriculum and in some cases are only introduced to learner programmers as an elective  as bonus material."}' }}
-        {{>article-item}}
-      {{/parseJSON}}
-      {{#parseJSON '{"title": "Supporting Novice Programmer DevOps Integration", "authors": "Tyrone Justin R. Sta. Maria, Gavin Raine Dizon, Vince Anthony Esquivel, Jordan Aiko Deja and Unisse Chua", "abstract": "DevOps is usually an industry approach that is practiced by seasoned and experienced programmers and developers. In most university settings especially in the Philippine context, DevOps is not usually part of the curriculum and in some cases are only introduced to learner programmers as an elective  as bonus material."}' }}
-        {{>article-item}}
-      {{/parseJSON}}
-       {{#parseJSON '{"title": "Supporting Novice Programmer DevOps Integration", "authors": "Tyrone Justin R. Sta. Maria, Gavin Raine Dizon, Vince Anthony Esquivel, Jordan Aiko Deja and Unisse Chua", "abstract": "DevOps is usually an industry approach that is practiced by seasoned and experienced programmers and developers. In most university settings especially in the Philippine context, DevOps is not usually part of the curriculum and in some cases are only introduced to learner programmers as an elective  as bonus material."}' }}
-        {{>article-item}}
-      {{/parseJSON}}
-       {{#parseJSON '{"title": "Supporting Novice Programmer DevOps Integration", "authors": "Tyrone Justin R. Sta. Maria, Gavin Raine Dizon, Vince Anthony Esquivel, Jordan Aiko Deja and Unisse Chua", "abstract": "DevOps is usually an industry approach that is practiced by seasoned and experienced programmers and developers. In most university settings especially in the Philippine context, DevOps is not usually part of the curriculum and in some cases are only introduced to learner programmers as an elective  as bonus material."}' }}
-        {{>article-item}}
-      {{/parseJSON}}
+      {{/each}}
 
     </div>
   </div>
