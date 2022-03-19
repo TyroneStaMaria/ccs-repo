@@ -5,6 +5,7 @@
     {{#unless isArticle}}
       <div class="nav__search">
         <form action="/articles/search" method="GET">
+          <input type="hidden" name="origin" value="navbar" />
           <input type="text" placeholder="Search Articles" name="q" />
         </form>
       </div>

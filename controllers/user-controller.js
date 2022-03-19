@@ -47,7 +47,7 @@ async function login(req, res) {
     }
   } else {
     const messages = errors.array().map((item) => item.msg);
-    req.flash("error_msg", messages.join(" "));
+    req.flash("error_msg", messages);
     res.redirect("/login");
   }
 }

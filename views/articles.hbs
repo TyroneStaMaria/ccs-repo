@@ -1,31 +1,30 @@
 <link rel="stylesheet" href="/css/articles.css" />
 <section class="search-section bg-gray">
-  <form name="search" action="/articles/search" method="GET">
-      <input class="search-section__input" type="text" placeholder="Search" name="q" />
+  <form id="searchForm" name="search" action="/articles/search" method="GET">
+    <input class="search-section__input" type="text" id="searchQuery" placeholder="Search" name="q" />
   </form>
 </section>
-
 <section class="padded">
   <div class="flex container">
     <div class="filter">
       <h4>Filter By:</h4>
       <div class="filter__box">
         <h4>Year</h4>
-        <fieldset form="search" name="year">
+        <fieldset form="searchForm" name="year" id="yearField">
           <div>
-            <input type="checkbox" name="2022" id="2022" />
+            <input type="checkbox" name="year" form="searchForm" id="2022" value="2022" />
             <label for="2022">2022</label>
           </div>
           <div>
-            <input type="checkbox" name="2021" id="2021" />
+            <input type="checkbox" name="year" form="searchForm" id="2021" value="2021" />
             <label for="2021">2021</label>
           </div>
           <div>
-            <input type="checkbox" name="2020" id="2020" />
+            <input type="checkbox" name="year" form="searchForm" id="2020" value="2020" />
             <label for="2020">2020</label>
           </div>
           <div>
-            <input type="checkbox" name="2019" id="2019" />
+            <input type="checkbox" name="year" form="searchForm" id="2019" value="2019" />
             <label for="2019">2019</label>
           </div>
         </fieldset>
@@ -35,7 +34,9 @@
       {{#each articles}}
         {{>article-item}}
       {{/each}}
-
     </div>
+    <div id="articleCont"></div>
   </div>
 </section>
+
+<script src="/js/articles.js"></script>

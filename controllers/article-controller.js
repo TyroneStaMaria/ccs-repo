@@ -9,11 +9,31 @@ async function getArticles(req, res) {
 }
 async function searchArticles(req, res) {
   try {
-    const { q } = req.query;
-    console.log(req.query);
-    const articles = await Article.find({
-      title: { $regex: new RegExp(q, "i") },
-    }).lean();
+    const { q, year } = req.query;
+
+    const years = Array.isArray(year) ? year : [year];
+    const yearsFilter = years.map((year) => {
+      const startDate = new Date(`${year || 1900}-01-01`);
+      const endDate = new Date(`${year || 9999}-12-31`);
+      return {
+        publicationDate: {
+          $gte: startDate,
+          $lte: endDate,
+        },
+      };
+    });
+
+    const articles = await Article.aggregate([
+      {
+        $match: {
+          $and: [
+            { title: { $regex: new RegExp(q, "i") } },
+            { $or: [...yearsFilter] },
+          ],
+        },
+      },
+    ]);
+
     return res.render("articles", {
       title: "Articles",
       articles: articles,
