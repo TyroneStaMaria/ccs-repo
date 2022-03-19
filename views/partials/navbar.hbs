@@ -19,8 +19,10 @@
     <ul class="flex nav__items">
       <li><a href="/"> Home</a></li>
       <li><a href="/articles"> Articles</a></li>
-      <li><a class="button button--outline" href="/register">Register</a></li>
-      <li><a class="button" href="/login">Log-in</a></li>
+      {{#unless isLoggedIn}}
+        <li><a class="button button--outline" href="/register">Register</a></li>
+        <li><a class="button" href="/login">Log-in</a></li>
+      {{/unless}}
     </ul>
   </div>
 </nav>
