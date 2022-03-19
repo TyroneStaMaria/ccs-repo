@@ -16,3 +16,27 @@
 .article__list > div:not(:first-child) {
   margin-top: 12px;
 }
+
+.message {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.message small {
+  font-weight: bold;
+}
+
+.error-msg {
+  background-color: #f08080;
+}
+
+.error-msg small {
+  color: #ed2939;
+}
+
+.success-msg {
+  background-color: #29ab87;
+}
+.success-msg small {
+  color: #004b49;
+}

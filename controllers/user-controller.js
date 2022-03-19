@@ -4,18 +4,26 @@ const SALT_ROUNDS = 8;
 const { validationResult } = require("express-validator");
 
 async function createUser(req, res) {
+  const errors = validationResult(req);
   const user = req.body;
-  if (user.password === user.confirmPassword) {
+  if (errors.isEmpty()) {
     try {
       const hashedPassword = await bcrypt.hash(user.password, SALT_ROUNDS);
       const newUser = new User({ ...user, password: hashedPassword });
       const response = await newUser.save();
-
-      res.redirect("/login");
+      req.flash(
+        "success_msg",
+        "You have successfully registered. You can now Log in"
+      );
     } catch (err) {
-      console.log(err);
-      res.redirect("/register");
+      req.flash("error_msg", "User already exists. Please Log in");
+    } finally {
+      res.redirect("/login");
     }
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+    req.flash("error_msg", messages);
+    res.redirect("/register");
   }
 }
 
@@ -28,11 +36,9 @@ async function login(req, res) {
       const isPasswordSame = await bcrypt.compare(password, user.password);
       if (isPasswordSame) {
         req.session.user = user;
-        res.locals.user = user;
         res.redirect("/");
       } else {
         req.flash("error_msg", "Password do not match");
-        console.log("hello");
         res.redirect("/login");
       }
     } catch (err) {
