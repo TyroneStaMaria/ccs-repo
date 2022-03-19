@@ -4,6 +4,7 @@ const exphbs = require("express-handlebars");
 const path = require("path");
 const app = express();
 const session = require("express-session");
+const flash = require("connect-flash");
 const viewRoutes = require("./routes/view-routes");
 const articleRoutes = require("./routes/article-routes");
 const userRoutes = require("./routes/user-routes");
@@ -32,6 +33,11 @@ app.use(
     cookie: { maxAge: 60 * 60 * 24 }, //TODO: add secure:true on deployment
   })
 );
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.error_msg = req.flash("error_msg");
+  next();
+});
 
 app.set("view engine", "hbs");
 app.engine("hbs", hbs.engine);
