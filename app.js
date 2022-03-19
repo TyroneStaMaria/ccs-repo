@@ -30,7 +30,7 @@ app.use(
     saveUninitialized: false,
     name: "loginSession",
     resave: false,
-    cookie: { maxAge: 60 * 60 * 24 }, //TODO: add secure:true on deployment
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }, //TODO: add secure:true on deployment
   })
 );
 app.use(flash());
