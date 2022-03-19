@@ -4,6 +4,7 @@ const path = require("path");
 const app = express();
 const viewRoutes = require("./routes/view-routes");
 const articleRoutes = require("./routes/article-routes");
+const userRoutes = require("./routes/user-routes");
 
 const API_ROUTE = "/api/v1";
 const hbs = exphbs.create({
@@ -28,4 +29,6 @@ app.use(express.static("public"));
 
 app.use(viewRoutes);
 app.use("/articles", articleRoutes);
+app.use("/users", userRoutes);
+
 module.exports = app;
