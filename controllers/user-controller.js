@@ -16,6 +16,14 @@ async function createUser(req, res) {
 
 async function login(req, res) {
   const { email, password } = req.body;
+  if (email && password) {
+    const user = await User.findOne({ email: email });
+    const isPasswordSame = await bcrypt.compare(password, user.password);
+    if (isPasswordSame) {
+      req.session.user = user;
+      res.redirect("/");
+    }
+  }
 }
 
-module.exports = { createUser };
+module.exports = { createUser, login };
