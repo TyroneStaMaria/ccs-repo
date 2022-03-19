@@ -6,11 +6,16 @@ const { validationResult } = require("express-validator");
 async function createUser(req, res) {
   const user = req.body;
   if (user.password === user.confirmPassword) {
-    const hashedPassword = await bcrypt.hash(user.password, SALT_ROUNDS);
-    const newUser = new User({ ...user, password: hashedPassword });
-    const response = await newUser.save();
+    try {
+      const hashedPassword = await bcrypt.hash(user.password, SALT_ROUNDS);
+      const newUser = new User({ ...user, password: hashedPassword });
+      const response = await newUser.save();
 
-    res.status(200).json(response);
+      res.redirect("/login");
+    } catch (err) {
+      console.log(err);
+      res.redirect("/register");
+    }
   }
 }
 
@@ -23,6 +28,7 @@ async function login(req, res) {
       const isPasswordSame = await bcrypt.compare(password, user.password);
       if (isPasswordSame) {
         req.session.user = user;
+        res.locals.user = user;
         res.redirect("/");
       } else {
         req.flash("error_msg", "Password do not match");

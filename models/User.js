@@ -6,6 +6,7 @@ const User = new Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   firstName: {
     type: String,
@@ -19,7 +20,7 @@ const User = new Schema({
     type: String,
     required: true,
   },
-  favorites: [Article],
+  // favorites: [Article],
 });
 
 module.exports = mongoose.model("User", User);
