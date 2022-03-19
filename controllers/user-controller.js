@@ -33,8 +33,8 @@ async function login(req, res) {
   if (errors.isEmpty()) {
     try {
       const user = await User.findOne({ email: email });
-      const isPasswordSame = await bcrypt.compare(password, user.password);
-      if (isPasswordSame) {
+      const passwordsMatch = await bcrypt.compare(password, user.password);
+      if (passwordsMatch) {
         req.session.user = user;
         res.redirect("/");
       } else {
