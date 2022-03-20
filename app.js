@@ -19,6 +19,13 @@ const hbs = exphbs.create({
     parseJSON: (data, options) => {
       return options.fn(JSON.parse(data));
     },
+    paginate: (data, options) => {
+      let ret = "";
+      for (let i = 1; i <= data; i++) {
+        ret += options.fn(i);
+      }
+      return ret;
+    },
   },
 });
 

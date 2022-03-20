@@ -22,3 +22,17 @@
   display: flex;
   flex-direction: column;
 }
+
+.pagination {
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.pagination__btn {
+  min-width: 30px;
+}
+
+.pagination__btn--active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}

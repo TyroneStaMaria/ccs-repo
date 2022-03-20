@@ -9,7 +9,7 @@ async function getArticles(req, res) {
 }
 async function searchArticles(req, res) {
   try {
-    const { q, year } = req.query;
+    const { q, year, page } = req.query;
 
     const years = Array.isArray(year) ? year : [year];
     const yearsFilter = years.map((year) => {
@@ -23,7 +23,7 @@ async function searchArticles(req, res) {
       };
     });
 
-    const articles = await Article.aggregate([
+    const articlesAggregate = Article.aggregate([
       {
         $match: {
           $and: [
@@ -34,10 +34,20 @@ async function searchArticles(req, res) {
       },
     ]);
 
+    const { docs: articles, totalPages } = await Article.aggregatePaginate(
+      articlesAggregate,
+      {
+        limit: 5,
+        page: page || 1,
+      }
+    );
+    // const articles = result.docs;
+
     return res.render("articles", {
       title: "Articles",
       articles: articles,
       isArticle: true,
+      totalPages,
     });
   } catch (err) {
     console.log(err);

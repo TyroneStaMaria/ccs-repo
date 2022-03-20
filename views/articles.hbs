@@ -35,7 +35,13 @@
         {{>article-item}}
       {{/each}}
     </div>
-    <div id="articleCont"></div>
+  </div>
+  <div class="pagination flex">
+    {{#paginate totalPages}}
+      <button class="pagination__btn"  form="searchForm" name="page" value="{{this}}">
+        {{this}}
+      </button>
+    {{/paginate}}
   </div>
 </section>
 
