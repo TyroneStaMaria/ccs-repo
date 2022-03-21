@@ -21,10 +21,12 @@
     <ul class="flex nav__items">
       <li><a href="/"> Home</a></li>
       <li><a href="/articles/search"> Articles</a></li>
-      {{#unless isLoggedIn}}
+      {{#if isLoggedIn}}
+        <li><a href="/users/logout">Log out</a></li>
+      {{else}}
         <li><a class="button button--outline" href="/register">Register</a></li>
         <li><a class="button" href="/login">Log-in</a></li>
-      {{/unless}}
+      {{/if}}
     </ul>
   </div>
 </nav>

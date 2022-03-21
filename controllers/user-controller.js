@@ -52,4 +52,12 @@ async function login(req, res) {
   }
 }
 
-module.exports = { createUser, login };
+async function logout(req, res) {
+  if (req.session) {
+    await req.session.destroy();
+    res.clearCookie("loginSession");
+    res.redirect("/login");
+  }
+}
+
+module.exports = { createUser, login, logout };
