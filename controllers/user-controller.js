@@ -52,11 +52,14 @@ async function login(req, res) {
   }
 }
 
-async function logout(req, res) {
+function logout(req, res) {
   if (req.session) {
-    await req.session.destroy();
-    res.clearCookie("loginSession");
-    res.redirect("/login");
+    req.session.destroy((err) => {
+      if (!err) {
+        res.clearCookie("loginSession");
+        res.redirect("/login");
+      }
+    });
   }
 }
 
