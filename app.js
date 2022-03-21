@@ -4,10 +4,12 @@ const exphbs = require("express-handlebars");
 const path = require("path");
 const app = express();
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const viewRoutes = require("./routes/view-routes");
 const articleRoutes = require("./routes/article-routes");
 const userRoutes = require("./routes/user-routes");
+const mongoose = require("mongoose");
 
 const API_ROUTE = "/api/v1";
 const hbs = exphbs.create({
@@ -34,8 +36,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    saveUninitialized: false,
-    name: "loginSession",
+    store: MongoStore.create({ mongoUrl: process.env.DB_URI }),
+    saveUninitialized: true,
     resave: false,
     cookie: { maxAge: 1000 * 60 * 60 * 24 }, //TODO: add secure:true on deployment
   })

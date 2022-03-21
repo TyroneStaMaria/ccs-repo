@@ -35,6 +35,7 @@ async function login(req, res) {
       const user = await User.findOne({ email: email });
       const passwordsMatch = await bcrypt.compare(password, user.password);
       if (passwordsMatch) {
+        user.password = "";
         req.session.user = user;
         res.redirect("/");
       } else {
