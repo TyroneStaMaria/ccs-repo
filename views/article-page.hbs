@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="/css/article-page.css" />
+
+<section class="padded container">
+  <h1 class="text-primary">{{article.title}}</h1>
+  <div class="authors">
+    <p><span>Authors: </span>
+      {{#each article.authors}}
+        {{this.name}},
+      {{/each}}
+    </p>
+  </div>
+  <div class="flex buttons__container">
+    <a href="#" class="button">Download PDF</a>
+    <a href="#" class="button button--outline">Add to Favorites</a>
+    <a href="#" class="button button--outline">Cite Article</a>
+  </div>
+  <div class="abstract">
+    <h4>Abstract</h4>
+    <p>{{article.abstract}}</p>
+  </div>
+</section>

@@ -23,4 +23,10 @@ router.get("/register", (req, res) => {
   return res.render("register", { title: "Register" });
 });
 
+router.get("/article/:id", async (req, res) => {
+  const article = await Article.findById(req.params.id).lean();
+  console.log(article);
+  return res.render("article-page", { title: "Article", article });
+});
+
 module.exports = router;

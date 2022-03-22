@@ -13,6 +13,11 @@
 .article__heading {
   color: var(--color-primary);
 }
+
+.article__heading:hover {
+  text-decoration: underline;
+}
+
 .article__list > div:not(:first-child) {
   margin-top: 12px;
 }

@@ -1,0 +1,11 @@
+.buttons__container {
+  margin: 24px 0;
+}
+
+.abstract {
+  background-color: #f0f0f0;
+  padding: 24px;
+}
+.abstract h4 {
+  font-style: italic;
+}
