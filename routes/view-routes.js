@@ -25,7 +25,6 @@ router.get("/register", (req, res) => {
 
 router.get("/article/:id", async (req, res) => {
   const article = await Article.findById(req.params.id).lean();
-  console.log(article);
   return res.render("article-page", { title: "Article", article });
 });
 

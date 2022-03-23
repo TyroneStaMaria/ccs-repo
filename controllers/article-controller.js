@@ -1,4 +1,8 @@
 const Article = require("../models/Article");
+const User = require("../models/User");
+const _ = require("lodash");
+const { checkIfFavorited } = require("../utils/helpers");
+
 async function getArticles(req, res) {
   try {
     const articles = await Article.find();
@@ -54,4 +58,26 @@ async function searchArticles(req, res) {
   }
 }
 
-module.exports = { getArticles, searchArticles };
+async function toggleFavoriteArticles(req, res) {
+  const currUser = req.session.user;
+  if (currUser) {
+    try {
+      const user = await User.findById(currUser._id);
+      const article = await Article.findById(req.params.id);
+      if (!checkIfFavorited(article, user.favorites)) {
+        user.favorites.push(article);
+      } else {
+        user.favorites = _.remove(user.favorites, (item) => {
+          return item === article;
+        });
+      }
+      user.save();
+      res.redirect("/articles/search");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  res.redirect("/");
+}
+
+module.exports = { getArticles, searchArticles, toggleFavoriteArticles };
