@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-const Article = require("./Article");
+const Article = require("./Article").schema;
 
 const User = new Schema({
   email: {
@@ -20,7 +20,7 @@ const User = new Schema({
     type: String,
     required: true,
   },
-  // favorites: [Article],
+  favorites: [Article],
 });
 
 module.exports = mongoose.model("User", User);
