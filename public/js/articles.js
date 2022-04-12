@@ -29,4 +29,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
 
   searchInput.value = urlParams.get("q");
+
+  const favButton = document.getElementById("toggleFavorites");
+  const articleId = document.getElementById("articleId").value;
+
+  favButton.addEventListener("click", async (event) => {
+    const res = await fetch("/users/favorites", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ articleId: articleId }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      // favButton.innerHTML = "Remove from Favorites";
+    }
+  });
 });

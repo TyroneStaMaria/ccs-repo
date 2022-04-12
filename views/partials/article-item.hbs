@@ -7,8 +7,13 @@
     {{/each}}
   </small>
   <p class="article__abstract">{{abstract}}</p>
+  {{#checkFavorite this._id @root.userId}}
+    <button>{{this}}</button>
+  {{/checkFavorite}}
+
   <div>
-    <a href="/articles/add-to-favorites/{{this._id}}">Save</a>
+    <input type="hidden" name="articleId" value="{{this._id}}" id="articleId" />
+    {{! <button id="toggleFavorites" type="submit">Add to Favorites</button> }}
     <span>Cite</span>
   </div>
 </div>
