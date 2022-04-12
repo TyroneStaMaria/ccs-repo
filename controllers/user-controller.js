@@ -1,7 +1,11 @@
 const User = require("../models/User");
+const Article = require("../models/Article");
+
 const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 8;
 const { validationResult } = require("express-validator");
+const _ = require("lodash");
+const { checkIfFavorited } = require("../utils/helpers");
 
 async function createUser(req, res) {
   const errors = validationResult(req);
@@ -64,4 +68,26 @@ function logout(req, res) {
   }
 }
 
-module.exports = { createUser, login, logout };
+async function toggleFavoriteArticles(req, res) {
+  const currUser = req.session.user;
+  if (currUser) {
+    try {
+      const user = await User.findById(currUser._id);
+      const article = await Article.findById(req.body.articleId);
+      if (!checkIfFavorited(article, user.favorites)) {
+        user.favorites.push(article);
+      } else {
+        user.favorites = _.remove(user.favorites, (item) => {
+          return item === article;
+        });
+      }
+      user.save();
+      return res.status(200).json({ success: true });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  return res.redirect("/login");
+}
+
+module.exports = { createUser, login, logout, toggleFavoriteArticles };
