@@ -23,6 +23,12 @@ router.get("/register", (req, res) => {
   return res.render("register", { title: "Register" });
 });
 
+router.get("/account", (req, res) => {
+  const { firstName, lastName } = req.session.user;
+  const name = `${firstName} ${lastName}`;
+  return res.render("account", { title: name, user: req.session.user });
+});
+
 router.get("/article/:id", async (req, res) => {
   const article = await Article.findById(req.params.id).lean();
   return res.render("article-page", { title: "Article", article });

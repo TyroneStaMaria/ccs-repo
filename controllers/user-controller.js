@@ -90,4 +90,30 @@ async function toggleFavoriteArticles(req, res) {
   return res.redirect("/login");
 }
 
-module.exports = { createUser, login, logout, toggleFavoriteArticles };
+async function editAccount(req, res) {
+  const currUser = req.session.user;
+
+  if (currUser) {
+    try {
+      const user = await User.findByIdAndUpdate(
+        currUser._id,
+        { ...req.body },
+        { new: true }
+      );
+      req.session.user = user;
+    } catch (err) {
+      console.log(err);
+    } finally {
+      return res.redirect("/account");
+    }
+  }
+  return res.redirect("/login");
+}
+
+module.exports = {
+  createUser,
+  login,
+  logout,
+  toggleFavoriteArticles,
+  editAccount,
+};

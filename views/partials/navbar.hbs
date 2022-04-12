@@ -22,6 +22,8 @@
       <li><a href="/"> Home</a></li>
       <li><a href="/articles/search"> Articles</a></li>
       {{#if userId}}
+        <li><a href="/">Favorites</a></li>
+        <li><a href="/account">Account</a></li>
         <li><a href="/users/logout">Log out</a></li>
       {{else}}
         <li><a class="button button--outline" href="/register">Register</a></li>

@@ -10,11 +10,11 @@
 - [x] Log-in
 - [x] Log-out
 - [x] Register
-- [ ] View Account
-- [ ] Edit Account
+- [x] View Account
+- [x] Edit Account
 - [ ] Delete Account
 - [x] View Articles
-- [ ] View Article
+- [x] View Article
 - [ ] Add Article to Favorites
 - [ ] View Article in Favorites
 - [ ] Remove Article in Favorites

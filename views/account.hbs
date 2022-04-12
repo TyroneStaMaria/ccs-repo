@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="css/account.css" />
+<section class="padded container">
+  <h1 class="text-primary">{{user.firstName}} {{user.lastName}}</h1>
+  <form action="/users/edit-account?_method=PUT" method="POST">
+    <div class="flex account__details">
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        value="{{user.email}}"
+        disabled
+      />
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        name="firstName"
+        id="firstName"
+        value="{{user.firstName}}"
+      />
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        name="lastName"
+        id="lastName"
+        value="{{user.lastName}}"
+      />
+      <button type="submit" class="button">Save Changes</button>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,12 @@
+.account__details {
+  flex-direction: column;
+}
+
+.button {
+  max-width: 170px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: -10px;
+}
