@@ -14,7 +14,7 @@ function formDataToJson(formData) {
   return data;
 }
 
-async function submitForm(data) {
+async function submitForm(data, redirectLink) {
   const res = await fetch("/users/login", {
     method: "POST",
     headers: {
@@ -27,7 +27,7 @@ async function submitForm(data) {
   const resData = await res.json();
   console.log(resData);
   if (resData.success === true) {
-    window.location.replace("/");
+    window.location.replace(redirectLink);
   } else {
     showErrors(resData.errors);
   }
@@ -39,12 +39,12 @@ function resetErrors(formData) {
   }
 }
 
-const form = document.getElementById("login");
+const loginForm = document.getElementById("loginForm");
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const formData = new FormData(form);
   resetErrors(formData);
   const data = formDataToJson(formData);
-  await submitForm(data);
+  await submitForm(data, "/");
 });
