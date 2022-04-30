@@ -25,4 +25,4 @@
 ### TODO
 
 - [ ] Add route guarding
-- [ ] Improve form validation
+- [x] Improve form validation
