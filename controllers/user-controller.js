@@ -41,7 +41,7 @@ async function login(req, res) {
       if (passwordsMatch) {
         user.password = "";
         req.session.user = user;
-        return res.status(200).json({ errors: [], success: true });
+        return res.status(200).send({ errors: [], success: true });
       } else {
         return res.status(400).send({
           errors: [
