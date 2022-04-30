@@ -29,9 +29,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2020-04-25T00:00:00Z",
-    },
+    publicationDate: new Date("2020-4-25"),
   },
   {
     title: "Test Paper 1",
@@ -62,9 +60,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2021-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2022-4-25"),
   },
   {
     title: "Test Paper 2",
@@ -95,9 +91,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2021-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2021-4-25"),
   },
   {
     title: "Test Paper 3",
@@ -128,9 +122,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2019-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2020-4-25"),
   },
   {
     title: "Test Paper 4",
@@ -161,9 +153,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2020-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2022-4-25"),
   },
   {
     title: "Test Paper 5",
@@ -194,9 +184,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2020-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2021-4-25"),
   },
   {
     title: "Test Paper 6",
@@ -227,9 +215,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2020-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2020-4-25"),
   },
   {
     title: "Test Paper 7",
@@ -260,9 +246,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2021-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2022-4-25"),
   },
   {
     title: "Test Paper 8",
@@ -293,9 +277,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2021-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2021-4-25"),
   },
   {
     title: "Test Paper 9",
@@ -326,9 +308,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2021-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2021-4-25"),
   },
   {
     title: "Test Paper 10",
@@ -359,9 +339,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2021-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2022-4-25"),
   },
   {
     title: "Test Paper 11",
@@ -392,9 +370,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2020-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2021-4-25"),
   },
   {
     title: "Test Paper 12",
@@ -425,9 +401,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2019-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2020-9-10"),
   },
   {
     title: "Test Paper 13",
@@ -458,9 +432,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2020-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2020-4-22"),
   },
   {
     title: "Test Paper 14",
@@ -491,9 +463,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2019-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2021-3-5"),
   },
   {
     title: "Test Paper 15",
@@ -524,9 +494,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: {
-      $date: "2019-10-24T16:00:00Z",
-    },
+    publicationDate: new Date("2022-10-25"),
   },
 ];
 
