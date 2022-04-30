@@ -3,6 +3,11 @@ const router = express.Router();
 
 const Article = require("../models/Article");
 
+const [
+  requireLogin,
+  alreadyLoggedIn,
+] = require("../middleware/routeAuthentication");
+
 router.get("/", async (req, res) => {
   const articles = await Article.find({ featured: true }).lean();
   return res.render("index", {
@@ -15,15 +20,15 @@ router.get("/articles", (req, res) => {
   return res.render("articles", { title: "Articles", isArticle: true });
 });
 
-router.get("/login", (req, res) => {
+router.get("/login", [alreadyLoggedIn], (req, res) => {
   return res.render("login", { title: "Login" });
 });
 
-router.get("/register", (req, res) => {
+router.get("/register", [alreadyLoggedIn], (req, res) => {
   return res.render("register", { title: "Register" });
 });
 
-router.get("/account", (req, res) => {
+router.get("/account", [requireLogin], (req, res) => {
   const { firstName, lastName } = req.session.user;
   const name = `${firstName} ${lastName}`;
   return res.render("account", { title: name, user: req.session.user });
