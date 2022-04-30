@@ -2,8 +2,9 @@
 
 ## How to Run
 
-1. Run `npm install` to download required dependencies.
-2. To start the server run `npm run start`.
+1. Run `npm run migration-up` to migrate the local database.
+2. Run `npm install` to download required dependencies.
+3. To start the server run `npm run start`.
 
 ### Features
 
@@ -20,3 +21,8 @@
 - [ ] Remove Article in Favorites
 - [ ] Add article to repository
 - [ ] Approve added article
+
+### TODO
+
+- [ ] Add route guarding
+- [ ] Improve form validation

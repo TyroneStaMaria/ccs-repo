@@ -6,7 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server",
-    "start": "node server"
+    "start": "node server",
+    "init-mongo": "migrate-mongo init",
+    "create-migration": "migrate-mongo create",
+    "migration-up": "migrate-mongo up",
+    "migration-down": "migrate-mongo down",
+    "migration-status": "migrate-mongo status"
   },
   "author": "Tyrone Sta. Maria",
   "license": "ISC",
@@ -23,5 +28,8 @@
     "method-override": "^3.0.0",
     "mongoose": "^6.2.4",
     "mongoose-aggregate-paginate-v2": "^1.0.6"
+  },
+  "devDependencies": {
+    "migrate-mongo": "^9.0.0"
   }
 }
