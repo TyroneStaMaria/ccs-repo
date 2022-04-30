@@ -41,19 +41,33 @@ async function login(req, res) {
       if (passwordsMatch) {
         user.password = "";
         req.session.user = user;
-        res.redirect("/");
+        return res.status(200).json({ errors: [], success: true });
       } else {
-        req.flash("error_msg", "Password do not match");
-        res.redirect("/login");
+        // req.flash("error_msg", "Password do not match");
+        // res.redirect("/login");
+        return res.status(400).send({
+          errors: [
+            {
+              param: "password",
+              msg: "Password does not match",
+            },
+          ],
+          success: false,
+        });
       }
     } catch (err) {
-      req.flash("error_msg", "User does not exist");
-      res.redirect("/login");
+      // req.flash("error_msg", "User does not exist");
+      // res.redirect("/login");
+      return res.status(400).send({
+        errors: [{ param: "email", msg: "User does not exist" }],
+        success: false,
+      });
     }
   } else {
-    const messages = errors.array().map((item) => item.msg);
-    req.flash("error_msg", messages);
-    res.redirect("/login");
+    const messages = errors.array();
+    // req.flash("error_msg", messages);
+    return res.status(400).send({ errors: messages, success: false });
+    // res.redirect("/login");
   }
 }
 

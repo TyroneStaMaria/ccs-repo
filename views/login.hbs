@@ -4,8 +4,10 @@
   <div class="form__card">
     <h1>Login</h1>
     {{>messages}}
-    <form action="/users/login" method="POST">
+    {{!-- action="/users/login" method="POST" --}}
+    <form id="login" > 
       <div class="form__items flex">
+        <div class="message error-msg" id="email"></div>
         <input
           class="form__input"
           type="email"
@@ -13,6 +15,7 @@
           name="email"
           placeholder="Email"
         />
+        <div class="message error-msg" id="password"></div>
         <input
           class="form__input"
           type="password"
@@ -27,3 +30,4 @@
 
   </div>
 </section>
+<script src="/js/forms.js"></script>

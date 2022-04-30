@@ -22,16 +22,16 @@
   margin-top: 12px;
 }
 
-.message {
+.message:not(div:empty) {
   padding: 10px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .message small {
   font-weight: bold;
 }
 
-.error-msg {
+.error-msg:not(div:empty) {
   background-color: #f08080;
 }
 
