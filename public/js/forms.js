@@ -14,8 +14,8 @@ function formDataToJson(formData) {
   return data;
 }
 
-async function submitForm(data, redirectLink) {
-  const res = await fetch("/users/login", {
+async function submitForm(data, requestUrl, redirectUrl) {
+  const res = await fetch(requestUrl, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -25,9 +25,8 @@ async function submitForm(data, redirectLink) {
     redirect: "follow",
   });
   const resData = await res.json();
-  console.log(resData);
   if (resData.success === true) {
-    window.location.replace(redirectLink);
+    window.location.replace(redirectUrl);
   } else {
     showErrors(resData.errors);
   }
@@ -39,12 +38,26 @@ function resetErrors(formData) {
   }
 }
 
-const loginForm = document.getElementById("loginForm");
+const form =
+  document.getElementById("loginForm") ||
+  document.getElementById("registerForm");
+
+const formInfo = {
+  loginForm: {
+    requestUrl: "/users/login",
+    redirectUrl: "/",
+  },
+  registerForm: {
+    requestUrl: "/users/register",
+    redirectUrl: "/login",
+  },
+};
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
+  const requestInfo = formInfo[form.id];
   const formData = new FormData(form);
   resetErrors(formData);
   const data = formDataToJson(formData);
-  await submitForm(data, "/");
+  await submitForm(data, requestInfo.requestUrl, requestInfo.redirectUrl);
 });

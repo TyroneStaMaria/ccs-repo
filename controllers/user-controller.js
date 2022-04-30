@@ -19,15 +19,16 @@ async function createUser(req, res) {
         "success_msg",
         "You have successfully registered. You can now Log in"
       );
+      res.status(200).send({ errors: [], success: true });
     } catch (err) {
-      req.flash("error_msg", "User already exists. Please Log in");
-    } finally {
-      res.redirect("/login");
+      res.status(409).send({
+        errors: [{ param: "email", msg: "User already exists. Please Log in" }],
+        success: false,
+      });
     }
   } else {
-    const messages = errors.array().map((item) => item.msg);
-    req.flash("error_msg", messages);
-    res.redirect("/register");
+    const messages = errors.array();
+    res.status(400).send({ errors: messages, success: false });
   }
 }
 
