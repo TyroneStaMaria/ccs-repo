@@ -1,5 +1,6 @@
 const Article = require("../models/Article");
 const User = require("../models/User");
+const { checkIfFavorited } = require("../utils/helpers");
 
 async function getArticles(req, res) {
   try {
@@ -36,7 +37,7 @@ async function searchArticles(req, res) {
       },
     ]);
 
-    const { docs: articles, totalPages } = await Article.aggregatePaginate(
+    const { docs, totalPages } = await Article.aggregatePaginate(
       articlesAggregate,
       {
         limit: 5,
@@ -44,6 +45,14 @@ async function searchArticles(req, res) {
       }
     );
     // const articles = result.docs;
+    const currUser = req.session.user;
+    const user = await User.findById(currUser._id);
+    const articles = user
+      ? docs.map((doc) => {
+          return { ...doc, isFavorite: !checkIfFavorited(doc, user.favorites) };
+        })
+      : docs;
+    // console.log(articles[0]);
 
     return res.render("articles", {
       title: "Articles",

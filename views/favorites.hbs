@@ -4,9 +4,11 @@
     <h1>My Favorite Articles</h1>
 
     {{#if favorites}}
-      {{#each favorites}}
-        {{>article-item}}
-      {{/each}}
+      <div class="article__list">
+        {{#each favorites}}
+          {{>article-item}}
+        {{/each}}
+      </div>
     {{else}}
       <div class="flex no-favorites">
         <span class="material-symbols-outlined text-dark-2">search_off</span> 

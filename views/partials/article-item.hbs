@@ -7,14 +7,20 @@
     {{/each}}
   </small>
   <p class="article__abstract">{{abstract}}</p>
-
   <div class="flex article__buttons">
     {{! <button id="toggleFavorites" type="submit">Add to Favorites</button> }}
-    <button class="flex">
-      <span class="material-symbols-outlined">
-        grade
-      </span>
-      Add to Favorites
+    <button class="favorite-button flex" value="{{this._id}}" class="flex">
+      {{#if isFavorite}}
+        <span class="material-symbols-outlined">
+          grade
+        </span>
+        Add to Favorites
+      {{else}}
+        <span class="material-symbols-outlined">
+          star
+        </span>
+        Remove from Favorites
+      {{/if}}
     </button>
     <button class="flex">
       <span class="material-symbols-outlined">

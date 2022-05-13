@@ -79,19 +79,23 @@ function logout(req, res) {
 
 async function toggleFavoriteArticles(req, res) {
   const currUser = req.session.user;
+  let method = "";
   if (currUser) {
     try {
       const user = await User.findById(currUser._id);
       const article = await Article.findById(req.body.articleId);
       if (!checkIfFavorited(article, user.favorites)) {
+        method = "add";
         user.favorites.push(article);
       } else {
-        user.favorites = _.remove(user.favorites, (item) => {
-          return item === article;
+        method = "remove";
+        user.favorites = user.favorites.filter((item) => {
+          return item._id.toString() !== article._id.toString();
         });
       }
       user.save();
-      return res.status(200).json({ success: true });
+      req.session.user = user;
+      return res.status(200).json({ success: true, method });
     } catch (err) {
       console.log(err);
     }
