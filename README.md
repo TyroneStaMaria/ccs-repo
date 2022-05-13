@@ -16,9 +16,9 @@
 - [ ] Delete Account
 - [x] View Articles
 - [x] View Article
-- [ ] Add Article to Favorites
-- [ ] View Article in Favorites
-- [ ] Remove Article in Favorites
+- [x] Add Article to Favorites
+- [x] View Article in Favorites
+- [x] Remove Article in Favorites
 - [ ] Add article to repository
 - [ ] Approve added article
 
