@@ -22,6 +22,12 @@
   margin-top: 12px;
 }
 
+.article__buttons > button {
+  gap: 3px;
+  align-items: center;
+  background-color: white;
+}
+
 .message:not(div:empty) {
   padding: 10px;
   /* margin-bottom: 10px; */

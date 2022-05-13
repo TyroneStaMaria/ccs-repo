@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Article = require("../models/Article");
+const User = require("../models/User");
 
 const [
   requireLogin,
@@ -37,6 +38,11 @@ router.get("/account", [requireLogin], (req, res) => {
 router.get("/article/:id", async (req, res) => {
   const article = await Article.findById(req.params.id).lean();
   return res.render("article-page", { title: "Article", article });
+});
+
+router.get("/favorites", async (req, res) => {
+  const favorites = req.session.user.favorites;
+  return res.render("favorites", { title: "Favorites", favorites });
 });
 
 module.exports = router;
