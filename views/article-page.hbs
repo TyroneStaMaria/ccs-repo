@@ -10,24 +10,36 @@
     </p>
   </div>
   <div class="flex buttons__container">
-    <a href="#" class="button">
+    <button class="button">
       <span class="material-symbols-outlined">
         file_download
       </span>
       Download PDF
-    </a>
-    <a href="#" class="button button--outline">
-      <span class="material-symbols-outlined">
-        grade
-      </span>
-      Add to Favorites
-    </a>
-    <a href="#" class="button button--outline">
+    </button>
+    {{#if userId}}
+      <button
+        class="button favorite-button button--outline"
+        value="{{article._id}}"
+      >
+        {{#if article.isFavorite}}
+          <span class="material-symbols-outlined">
+            grade
+          </span>
+          Add to Favorites
+        {{else}}
+          <span class="material-symbols-outlined">
+            star
+          </span>
+          Remove from Favorites
+        {{/if}}
+      </button>
+    {{/if}}
+    <button class="button button--outline">
       <span class="material-symbols-outlined">
         format_quote
       </span>
       Cite Article
-    </a>
+    </button>
   </div>
   <div class="abstract">
     <h4>Abstract</h4>

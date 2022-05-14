@@ -2,7 +2,7 @@
   margin: 24px 0;
 }
 
-.buttons__container > a {
+.buttons__container > button {
   display: flex;
   align-items: center;
   gap: 5px;

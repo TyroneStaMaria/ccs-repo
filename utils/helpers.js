@@ -1,3 +1,4 @@
+const User = require("../models/User");
 const _ = require("lodash");
 
 function checkIfFavorited(obj, list) {
@@ -7,4 +8,17 @@ function checkIfFavorited(obj, list) {
   return false;
 }
 
-module.exports = { checkIfFavorited };
+async function identifyFavoriteArticles(currUser, articles) {
+  if (currUser) {
+    const user = await User.findById(currUser._id);
+    return articles.map((article) => {
+      return {
+        ...article,
+        isFavorite: !checkIfFavorited(article, user.favorites),
+      };
+    });
+  }
+  return articles;
+}
+
+module.exports = { checkIfFavorited, identifyFavoriteArticles };

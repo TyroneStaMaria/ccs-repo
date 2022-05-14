@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Article = require("../models/Article");
 const User = require("../models/User");
+const { identifyFavoriteArticles } = require("../utils/helpers");
 
 const [
   requireLogin,
@@ -10,7 +11,10 @@ const [
 ] = require("../middleware/routeAuthentication");
 
 router.get("/", async (req, res) => {
-  const articles = await Article.find({ featured: true }).lean();
+  const docs = await Article.find({ featured: true }).lean();
+
+  const articles = await identifyFavoriteArticles(req.session.user, docs);
+
   return res.render("index", {
     title: "Home",
     articles: articles,
@@ -36,8 +40,9 @@ router.get("/account", [requireLogin], (req, res) => {
 });
 
 router.get("/article/:id", async (req, res) => {
-  const article = await Article.findById(req.params.id).lean();
-  return res.render("article-page", { title: "Article", article });
+  const doc = await Article.findById(req.params.id).lean();
+  const article = await identifyFavoriteArticles(req.session.user, [doc]);
+  return res.render("article-page", { title: "Article", article: article[0] });
 });
 
 router.get("/favorites", async (req, res) => {

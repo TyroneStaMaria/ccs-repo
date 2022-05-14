@@ -1,6 +1,6 @@
 const Article = require("../models/Article");
 const User = require("../models/User");
-const { checkIfFavorited } = require("../utils/helpers");
+const { identifyFavoriteArticles } = require("../utils/helpers");
 
 async function getArticles(req, res) {
   try {
@@ -44,15 +44,8 @@ async function searchArticles(req, res) {
         page: page || 1,
       }
     );
-    // const articles = result.docs;
-    const currUser = req.session.user;
-    const user = await User.findById(currUser._id);
-    const articles = user
-      ? docs.map((doc) => {
-          return { ...doc, isFavorite: !checkIfFavorited(doc, user.favorites) };
-        })
-      : docs;
-    // console.log(articles[0]);
+
+    const articles = await identifyFavoriteArticles(req.session.user, docs);
 
     return res.render("articles", {
       title: "Articles",
