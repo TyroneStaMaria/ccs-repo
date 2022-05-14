@@ -13,7 +13,6 @@ const userRoutes = require("./routes/user-routes");
 const mongoose = require("mongoose");
 const hbsHelpers = require("./utils/hbsHelpers");
 
-const API_ROUTE = "/api/v1";
 const hbs = exphbs.create({
   extname: "hbs",
   defaultLayout: "main",

@@ -1,4 +1,4 @@
-.account__details {
+.form__details {
   flex-direction: column;
 }
 
@@ -9,4 +9,51 @@
 label {
   font-weight: bold;
   margin-bottom: -10px;
+}
+
+.sidebar {
+  width: 15%;
+  border-right: 1px solid var(--color-dark-2);
+  padding: 20px 0px;
+  position: fixed;
+  height: 100%;
+}
+
+.sidebar > .sidebar__items > li {
+  margin-bottom: 15px;
+}
+
+.author__details {
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.authors__list {
+  flex-direction: column;
+}
+
+.authors__list button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 300px;
+}
+
+.remove-author {
+  background-color: white;
+  border-color: #ed2939;
+  color: #ed2939;
+}
+
+.remove-author span {
+  font-size: 32px;
+}
+
+input[type="date"] {
+  width: 200px;
+}
+
+textarea {
+  resize: none;
 }

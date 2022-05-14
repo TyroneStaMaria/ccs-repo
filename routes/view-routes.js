@@ -39,6 +39,10 @@ router.get("/account", [requireLogin], (req, res) => {
   return res.render("account", { title: name, user: req.session.user });
 });
 
+router.get("/add-paper", [requireLogin], (req, res) => {
+  return res.render("add-paper", { title: "Add Paper" });
+});
+
 router.get("/article/:id", async (req, res) => {
   const doc = await Article.findById(req.params.id).lean();
   const article = await identifyFavoriteArticles(req.session.user, [doc]);

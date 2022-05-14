@@ -20,7 +20,16 @@ const User = new Schema({
     type: String,
     required: true,
   },
-  favorites: [Article],
+  favorites: {
+    type: [Article],
+    required: false,
+    default: [],
+  },
+  role: {
+    type: String,
+    required: true,
+    default: "user",
+  },
 });
 
 module.exports = mongoose.model("User", User);
