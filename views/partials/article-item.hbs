@@ -6,7 +6,11 @@
       {{this.name}},
     {{/each}}
   </small>
-  <p class="article__abstract">{{abstract}}</p>
+  <p class="article__abstract">
+    {{#trimString abstract}}
+      {{this}}
+    {{/trimString}}
+  </p>
   <div class="flex article__buttons">
     {{#if @root.userId}}
       <button class="favorite-button flex" value="{{this._id}}" class="flex">

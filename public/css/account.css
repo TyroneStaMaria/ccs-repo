@@ -11,18 +11,6 @@ label {
   margin-bottom: -10px;
 }
 
-.sidebar {
-  width: 15%;
-  border-right: 1px solid var(--color-dark-2);
-  padding: 20px 0px;
-  position: fixed;
-  height: 100%;
-}
-
-.sidebar > .sidebar__items > li {
-  margin-bottom: 15px;
-}
-
 .author__details {
   align-items: center;
   margin-bottom: 12px;

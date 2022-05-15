@@ -1,0 +1,8 @@
+.reject-button {
+  border-color: #ed2939;
+  --color-text: #ed2939;
+}
+
+.reject-button:hover {
+  background-color: #ed2939 !important;
+}

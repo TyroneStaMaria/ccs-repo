@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="/css/article-page.css" />
+<link rel="stylesheet" href="/css/article-request-page.css" />
+
+<section class="padded container">
+  <h1 class="text-primary">{{article.title}}</h1>
+  <div class="authors">
+    <p><span>Authors: </span>
+      {{#each article.authors}}
+        {{this.name}},
+      {{/each}}
+    </p>
+  </div>
+  <div class="flex buttons__container">
+    <button class="button">
+      <span class="material-symbols-outlined">
+        file_download
+      </span>
+      Download PDF
+    </button>
+
+    <button class="button button--outline">
+      <span class="material-symbols-outlined">
+        format_quote
+      </span>
+      Check Citation
+    </button>
+  </div>
+
+  <div class="abstract">
+    <h4>Abstract</h4>
+    <p>{{article.abstract}}</p>
+  </div>
+  <div class="flex buttons__container">
+    <button
+      class="button reject-button button--outline"
+      value="{{article._id}}"
+    >
+      <span class="material-symbols-outlined">
+        cancel
+      </span>
+      Reject Article
+    </button>
+    <button
+      class="button approve-button button--outline"
+      value="{{article._id}}"
+    >
+      <span class="material-symbols-outlined">
+        check_circle
+      </span>
+      Approve Article
+    </button>
+  </div>
+</section>

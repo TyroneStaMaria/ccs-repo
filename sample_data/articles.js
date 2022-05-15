@@ -58,7 +58,7 @@ const articles = [
     ],
     topics: ["HCI", "DevOps"],
     keywords: ["Programming", "Novice"],
-    featured: true,
+    featured: false,
     approved: true,
     publicationDate: new Date("2022-4-25"),
   },
@@ -89,7 +89,7 @@ const articles = [
     ],
     topics: ["HCI", "DevOps"],
     keywords: ["Programming", "Novice"],
-    featured: true,
+    featured: false,
     approved: true,
     publicationDate: new Date("2021-4-25"),
   },
@@ -126,7 +126,8 @@ const articles = [
   },
   {
     title: "Test Paper 4",
-    abstract: "Lorem ipsum bla bla bla ",
+    abstract:
+      "An Analysis of Yukon Delta Salmon Management Rita Asgeirsson, Western Washington University The broad range of Pacific Alaskan salmon has resulted in the creation of a complex and multiorganizational system of management that includes the state of Alaska, various federal departments, a Congressionally-mandated fishery council, and a number of commercial and nongovernmental fish organizations. In the Bering Sea salmon are caught by the commercial groundfish fleet as by-catch. On the Yukon River salmon are commercially and traditionally harvested for both economic and cultural sustenance by the Yup’ik residents of the Yukon Delta. Declining salmon populations has driven scientific research which considers the effects of Bering Sea salmon by-catch. My research findings indicate that Bering Sea fisheries occur where juvenile salmon mature, directly impacting Yukon River salmon populations. Further, the research reflects that although Yukon salmon populations have plummeted, a recent effort was made to open the northern Bering Sea, which includes the Yukon River coastal shelf, to deep-sea commercial fishing. By researching the relationship of policy to cultural salmon dependence, it becomes evident that Alaskan salmon-tribes are excluded from salmon management and decision-making. Legal research reflects that three basic federal Indian concepts – inherent rights, Indian Country, and tribal right of occupancy – emerge as potential foundations that may allow Alaskan salmontribes to begin sharing legal responsibility over salmon. Yukon River salmon are an international and anadromous species that require multiorganizational management. My research reflects that current management favors the Bering Sea commercial fishing industry, despite data indicating Bering Sea fisheries impact Yukon salmon populations and an overall downward trend in Yukon salmon populations. ",
     authors: [
       {
         name: "Tyrone Justin R. Sta. Maria",
@@ -152,7 +153,7 @@ const articles = [
     topics: ["HCI", "DevOps"],
     keywords: ["Programming", "Novice"],
     featured: true,
-    approved: true,
+    approved: false,
     publicationDate: new Date("2022-4-25"),
   },
   {
@@ -182,8 +183,8 @@ const articles = [
     ],
     topics: ["HCI", "DevOps"],
     keywords: ["Programming", "Novice"],
-    featured: true,
-    approved: true,
+    featured: false,
+    approved: false,
     publicationDate: new Date("2021-4-25"),
   },
   {
@@ -214,7 +215,7 @@ const articles = [
     topics: ["HCI", "DevOps"],
     keywords: ["Programming", "Novice"],
     featured: true,
-    approved: true,
+    approved: false,
     publicationDate: new Date("2020-4-25"),
   },
   {
@@ -275,7 +276,7 @@ const articles = [
     ],
     topics: ["HCI", "DevOps"],
     keywords: ["Programming", "Novice"],
-    featured: true,
+    featured: false,
     approved: true,
     publicationDate: new Date("2021-4-25"),
   },
@@ -306,7 +307,7 @@ const articles = [
     ],
     topics: ["HCI", "DevOps"],
     keywords: ["Programming", "Novice"],
-    featured: true,
+    featured: false,
     approved: true,
     publicationDate: new Date("2021-4-25"),
   },
@@ -492,7 +493,7 @@ const articles = [
     ],
     topics: ["HCI", "DevOps"],
     keywords: ["Programming", "Novice"],
-    featured: true,
+    featured: false,
     approved: true,
     publicationDate: new Date("2022-10-25"),
   },
