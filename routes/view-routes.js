@@ -5,12 +5,14 @@ const Article = require("../models/Article");
 const User = require("../models/User");
 const { identifyFavoriteArticles } = require("../utils/helpers");
 
-const [
+const {
   requireLogin,
   alreadyLoggedIn,
-] = require("../middleware/routeAuthentication");
+  userOnlyRoute,
+  moderatorOnlyRoute,
+} = require("../middleware/routeAuthentication");
 
-router.get("/", async (req, res) => {
+router.get("/", [userOnlyRoute], async (req, res) => {
   const docs = await Article.find({ featured: true }).lean();
 
   const articles = await identifyFavoriteArticles(req.session.user, docs);
@@ -21,9 +23,9 @@ router.get("/", async (req, res) => {
   });
 });
 
-router.get("/articles", (req, res) => {
-  return res.render("articles", { title: "Articles", isArticle: true });
-});
+// router.get("/articles", [userOnlyRoute], (req, res) => {
+//   return res.render("articles", { title: "Articles", isArticle: true });
+// });
 
 router.get("/login", [alreadyLoggedIn], (req, res) => {
   return res.render("login", { title: "Login" });
@@ -33,25 +35,44 @@ router.get("/register", [alreadyLoggedIn], (req, res) => {
   return res.render("register", { title: "Register" });
 });
 
-router.get("/account", [requireLogin], (req, res) => {
+router.get("/account", [requireLogin, userOnlyRoute], (req, res) => {
   const { firstName, lastName } = req.session.user;
   const name = `${firstName} ${lastName}`;
   return res.render("account", { title: name, user: req.session.user });
 });
 
 router.get("/add-paper", [requireLogin], (req, res) => {
-  return res.render("add-paper", { title: "Add Paper" });
+  const layout = req.session.user.role === "user" ? "main.hbs" : "mod.hbs";
+  return res.render("add-paper", { title: "Add Paper", layout });
 });
 
-router.get("/article/:id", async (req, res) => {
+router.get("/article/:id", [userOnlyRoute], async (req, res) => {
   const doc = await Article.findById(req.params.id).lean();
   const article = await identifyFavoriteArticles(req.session.user, [doc]);
   return res.render("article-page", { title: "Article", article: article[0] });
 });
 
-router.get("/favorites", async (req, res) => {
+router.get("/favorites", [userOnlyRoute], async (req, res) => {
   const favorites = req.session.user.favorites;
   return res.render("favorites", { title: "Favorites", favorites });
+});
+
+router.get("/moderator/article/:id", [moderatorOnlyRoute], async (req, res) => {
+  const article = await Article.findById(req.params.id).lean();
+  return res.render("article-request-page", {
+    title: "Article Request Page",
+    article,
+    layout: "mod.hbs",
+  });
+});
+
+router.get("/moderator", [moderatorOnlyRoute], async (req, res) => {
+  const articles = await Article.find({ approved: false }).lean();
+  return res.render("moderator", {
+    title: "Moderator",
+    layout: "mod.hbs",
+    articles,
+  });
 });
 
 module.exports = router;
