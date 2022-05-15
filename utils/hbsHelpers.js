@@ -25,6 +25,10 @@ const helpers = {
     //   });
     // });
   },
+  trimString: (data, options) => {
+    const trimmed = data.substring(0, 300);
+    return options.fn(trimmed + "...");
+  },
 };
 
 module.exports = helpers;
