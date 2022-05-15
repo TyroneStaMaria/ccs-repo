@@ -32,6 +32,7 @@ async function searchArticles(req, res) {
           $and: [
             { title: { $regex: new RegExp(q, "i") } },
             { $or: [...yearsFilter] },
+            { approved: true },
           ],
         },
       },

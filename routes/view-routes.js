@@ -13,7 +13,7 @@ const {
 } = require("../middleware/routeAuthentication");
 
 router.get("/", [userOnlyRoute], async (req, res) => {
-  const docs = await Article.find({ featured: true }).lean();
+  const docs = await Article.find({ featured: true, approved: true }).lean();
 
   const articles = await identifyFavoriteArticles(req.session.user, docs);
 
