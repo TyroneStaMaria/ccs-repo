@@ -38,6 +38,10 @@ nav {
   width: 100%;
 }
 
+.nav__items > li:last-child {
+  white-space: nowrap;
+}
+
 @media screen and (max-width: 749px) {
   .nav__items {
     flex-direction: column;
