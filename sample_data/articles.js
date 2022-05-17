@@ -247,7 +247,7 @@ const articles = [
     keywords: ["Programming", "Novice"],
     featured: true,
     approved: true,
-    publicationDate: new Date("2022-4-25"),
+    publicationDate: new Date("2019-4-25"),
   },
   {
     title: "Test Paper 8",

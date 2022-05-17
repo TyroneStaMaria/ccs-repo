@@ -1,7 +1,8 @@
 @import url("./variables.css");
 @import url("./reset.css");
 @import url("./utilities.css");
-
+@import url("./sidebar.css");
+@import url("./nav.css");
 .article {
   max-width: 800px;
   background: #ffffff;
