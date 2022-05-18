@@ -43,7 +43,7 @@ router.get("/account", [requireLogin, userOnlyRoute], (req, res) => {
 
 router.get("/add-paper", [requireLogin], (req, res) => {
   const layout = req.session.user.role === "user" ? "main.hbs" : "mod.hbs";
-  const isModView = req.session.user.role === "user" ? false : true
+  const isModView = req.session.user.role === "user" ? false : true;
   return res.render("add-paper", { title: "Add Paper", layout, isModView });
 });
 

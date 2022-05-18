@@ -31,9 +31,13 @@
       </div>
     </div>
     <div class="article__list">
-      {{#each articles}}
-        {{>article-item}}
-      {{/each}}
+      {{#if articles}}
+        {{#each articles}}
+          {{>article-item}}
+        {{/each}}
+      {{else}}
+        <h2>No articles found...</h2>
+      {{/if}}
     </div>
   </div>
   <div class="pagination flex">

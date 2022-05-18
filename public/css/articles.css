@@ -36,3 +36,7 @@
   background-color: var(--color-primary);
   color: var(--color-white);
 }
+
+.article__list h2 {
+  text-align: center;
+}
