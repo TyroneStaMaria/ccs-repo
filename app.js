@@ -21,12 +21,14 @@ const hbs = exphbs.create({
   helpers: hbsHelpers,
 });
 
+const DB_URI = process.env.DB_URI_LOCAL; //TODO: change to prod once deployed
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    store: MongoStore.create({ mongoUrl: process.env.DB_URI }),
+    store: MongoStore.create({ mongoUrl: DB_URI }),
     saveUninitialized: true,
     resave: false,
     cookie: { maxAge: 1000 * 60 * 60 * 24 }, //TODO: add secure:true on deployment

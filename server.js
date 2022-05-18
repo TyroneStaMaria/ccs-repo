@@ -4,8 +4,10 @@ const app = require("./app");
 const PORT = process.env.PORT || 8000;
 const mongoose = require("mongoose");
 
+const DB_URI = process.env.DB_URI_LOCAL; //TODO: change to prod once deployed
+
 mongoose
-  .connect(process.env.DB_URI, {
+  .connect(DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
