@@ -7,7 +7,7 @@ const {
 
 async function viewArticle(req, res) {
   const article = await Article.findById(req.params.id).lean();
-  return res.render("moderator/article-request-page", {
+  return res.render("moderator/article-page", {
     title: "Article Request Page",
     article,
     layout: "mod.hbs",

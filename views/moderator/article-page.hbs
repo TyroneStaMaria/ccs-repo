@@ -39,25 +39,31 @@
       <h4>Abstract</h4>
       <p>{{article.abstract}}</p>
     </div>
-    <div class="flex buttons__container">
-      <button
-        class="button reject-button button--outline"
-        value="{{article._id}}"
-      >
-        <span class="material-symbols-outlined">
-          cancel
-        </span>
-        Reject Article
-      </button>
-      <button
-        class="button approve-button button--outline"
-        value="{{article._id}}"
-      >
-        <span class="material-symbols-outlined">
-          check_circle
-        </span>
-        Approve Article
-      </button>
-    </div>
+    {{#if article.approved}}
+      <div>
+
+      </div>
+    {{else}}
+      <div class="flex buttons__container">
+        <button
+          class="button reject-button button--outline"
+          value="{{article._id}}"
+        >
+          <span class="material-symbols-outlined">
+            cancel
+          </span>
+          Reject Article
+        </button>
+        <button
+          class="button approve-button button--outline"
+          value="{{article._id}}"
+        >
+          <span class="material-symbols-outlined">
+            check_circle
+          </span>
+          Approve Article
+        </button>
+      </div>
+    {{/if}}
   </div>
 </section>
