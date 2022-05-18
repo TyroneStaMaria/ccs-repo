@@ -22,6 +22,7 @@
   border: 1px solid #e8e8e8;
   box-sizing: border-box;
   border-radius: 5px;
+  /* min-width: 345px; */
   padding: 30px 35px;
 }
 

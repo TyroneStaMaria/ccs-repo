@@ -9,7 +9,6 @@ const {
   requireLogin,
   alreadyLoggedIn,
   userOnlyRoute,
-  moderatorOnlyRoute,
 } = require("../middleware/routeAuthentication");
 
 router.get("/", [userOnlyRoute], async (req, res) => {
@@ -22,10 +21,6 @@ router.get("/", [userOnlyRoute], async (req, res) => {
     articles: articles,
   });
 });
-
-// router.get("/articles", [userOnlyRoute], (req, res) => {
-//   return res.render("articles", { title: "Articles", isArticle: true });
-// });
 
 router.get("/login", [alreadyLoggedIn], (req, res) => {
   return res.render("login", { title: "Login" });
@@ -56,24 +51,6 @@ router.get("/article/:id", [userOnlyRoute], async (req, res) => {
 router.get("/favorites", [userOnlyRoute], async (req, res) => {
   const favorites = req.session.user.favorites;
   return res.render("favorites", { title: "Favorites", favorites });
-});
-
-router.get("/moderator/article/:id", [moderatorOnlyRoute], async (req, res) => {
-  const article = await Article.findById(req.params.id).lean();
-  return res.render("article-request-page", {
-    title: "Article Request Page",
-    article,
-    layout: "mod.hbs",
-  });
-});
-
-router.get("/moderator", [moderatorOnlyRoute], async (req, res) => {
-  const articles = await Article.find({ approved: false }).lean();
-  return res.render("moderator", {
-    title: "Moderator",
-    layout: "mod.hbs",
-    articles,
-  });
 });
 
 module.exports = router;

@@ -10,6 +10,7 @@ const methodOverride = require("method-override");
 const viewRoutes = require("./routes/view-routes");
 const articleRoutes = require("./routes/article-routes");
 const userRoutes = require("./routes/user-routes");
+const moderatorRoutes = require("./routes/moderator-routes");
 const mongoose = require("mongoose");
 const hbsHelpers = require("./utils/hbsHelpers");
 
@@ -56,5 +57,6 @@ app.use(express.static("public"));
 app.use(viewRoutes);
 app.use("/articles", articleRoutes);
 app.use("/users", userRoutes);
+app.use("/moderator", moderatorRoutes);
 
 module.exports = app;
