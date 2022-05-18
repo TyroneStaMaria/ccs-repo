@@ -104,20 +104,19 @@ async function toggleFavoriteArticles(req, res) {
 }
 
 async function editAccount(req, res) {
-  const currUser = req.session.user;
+  const currUserId = req.params.id;
 
-  if (currUser) {
+  if (currUserId) {
     try {
       const user = await User.findByIdAndUpdate(
-        currUser._id,
+        currUserId,
         { ...req.body },
         { new: true }
       );
-      req.session.user = user;
     } catch (err) {
       console.log(err);
     } finally {
-      return res.redirect("/account");
+      return res.redirect("back");
     }
   }
   return res.redirect("/login");

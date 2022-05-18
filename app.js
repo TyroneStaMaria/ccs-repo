@@ -22,7 +22,7 @@ const hbs = exphbs.create({
   helpers: hbsHelpers,
 });
 
-const DB_URI = process.env.DB_URI_LOCAL; //TODO: change to prod once deployed
+const DB_URI = process.env.DB_URI_PROD; //TODO: change to prod once deployed
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

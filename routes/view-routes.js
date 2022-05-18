@@ -30,10 +30,11 @@ router.get("/register", [alreadyLoggedIn], (req, res) => {
   return res.render("register", { title: "Register" });
 });
 
-router.get("/account", [requireLogin, userOnlyRoute], (req, res) => {
-  const { firstName, lastName } = req.session.user;
+router.get("/account/:id", [requireLogin, userOnlyRoute], async (req, res) => {
+  const user = await User.findById(req.params.id).lean();
+  const { firstName, lastName } = user;
   const name = `${firstName} ${lastName}`;
-  return res.render("account", { title: name, user: req.session.user });
+  return res.render("account", { title: name, user });
 });
 
 router.get("/add-paper", [requireLogin], (req, res) => {
