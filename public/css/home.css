@@ -7,16 +7,28 @@
   align-items: center;
 }
 
+.hero-section__info a {
+  display: inline-block !important;
+}
+
 .bg-rect {
-  width: 110%;
+  width: 45%;
   background-color: var(--color-primary);
   height: 800px;
   position: absolute;
-  bottom: -360px;
-  left: -5px;
-  transform: rotate(-18.63deg);
+  top: 0;
+  right: 0;
   z-index: -1;
   overflow: hidden;
+}
+
+.hero-section__info {
+  width: 60%;
+  padding-right: 45px;
+}
+
+.hero-section__image {
+  width: 40%;
 }
 
 .hero-section__info > h1 {
