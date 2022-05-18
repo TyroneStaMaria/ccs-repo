@@ -45,3 +45,16 @@ input[type="date"] {
 textarea {
   resize: none;
 }
+
+.delete-account {
+  margin-top: 48px;
+}
+
+.delete-account .button {
+  margin-top: 8px;
+  background-color: #ed2939;
+}
+
+.delete-account .button:hover {
+  background-color: #b81e2b;
+}
