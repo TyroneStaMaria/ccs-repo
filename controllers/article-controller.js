@@ -1,6 +1,10 @@
 const Article = require("../models/Article");
-const User = require("../models/User");
-const { identifyFavoriteArticles } = require("../utils/helpers");
+
+const {
+  identifyFavoriteArticles,
+  getYearFilter,
+  aggregateArticles,
+} = require("../utils/helpers");
 
 async function getArticles(req, res) {
   try {
@@ -15,28 +19,9 @@ async function searchArticles(req, res) {
     const { q, year, page } = req.query;
 
     const years = Array.isArray(year) ? year : [year];
-    const yearsFilter = years.map((year) => {
-      const startDate = new Date(`${year || 1900}-01-01`);
-      const endDate = new Date(`${year || 9999}-12-31`);
-      return {
-        publicationDate: {
-          $gte: startDate,
-          $lte: endDate,
-        },
-      };
-    });
+    const yearsFilter = getYearFilter(years);
 
-    const articlesAggregate = Article.aggregate([
-      {
-        $match: {
-          $and: [
-            { title: { $regex: new RegExp(q, "i") } },
-            { $or: [...yearsFilter] },
-            { approved: true },
-          ],
-        },
-      },
-    ]);
+    const articlesAggregate = aggregateArticles(q, yearsFilter);
 
     const { docs, totalPages } = await Article.aggregatePaginate(
       articlesAggregate,
