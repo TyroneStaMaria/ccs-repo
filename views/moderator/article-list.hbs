@@ -1,48 +1,60 @@
 <link rel="stylesheet" href="/css/mod-articles.css" />
-<section class="search-section ">
-  <form id="searchForm" name="search" action="/moderator/articles/search" method="GET">
-    <input class="search-section__input" type="text" id="searchQuery" placeholder="Search" name="q" />
+<section class="search-section">
+  <form
+    id="searchForm"
+    name="search"
+    action="/moderator/articles/search"
+    method="GET"
+  >
+    <input
+      class="search-section__input"
+      type="text"
+      id="searchQuery"
+      placeholder="Search"
+      name="q"
+    />
   </form>
 </section>
 <section class="padded">
-  <div class="flex container">
-    <div class="filter">
-      <h4>Filter By:</h4>
-      <div class="filter__box">
-        <h4>Year</h4>
-        <fieldset form="searchForm" name="year" id="yearField">
-          <div>
-            <input type="checkbox" name="year" form="searchForm" id="2022" value="2022" />
-            <label for="2022">2022</label>
-          </div>
-          <div>
-            <input type="checkbox" name="year" form="searchForm" id="2021" value="2021" />
-            <label for="2021">2021</label>
-          </div>
-          <div>
-            <input type="checkbox" name="year" form="searchForm" id="2020" value="2020" />
-            <label for="2020">2020</label>
-          </div>
-          <div>
-            <input type="checkbox" name="year" form="searchForm" id="2019" value="2019" />
-            <label for="2019">2019</label>
-          </div>
-        </fieldset>
-      </div>
-    </div>
-    <div class="article__list">
-      {{#if articles}}
-        {{#each articles}}
-          {{>article-request}}
-        {{/each}}
-      {{else}}
-        <h2>No articles found...</h2>
-      {{/if}}
-    </div>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Article Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if articles}}
+          {{#each articles}}
+            <tr>
+              <td class="article-title">
+                <a href="/moderator/article/{{this._id}}">
+                  {{this.title}}
+                </a>
+              </td>
+              <td class="delete-article">
+                <a class="text-red" href="#">
+                  <span class="material-symbols-outlined">
+                    delete
+                  </span>
+                </a>
+              </td>
+            </tr>
+          {{/each}}
+        {{else}}
+          <tr><td>No articles found...</td></tr>
+        {{/if}}
+      </tbody>
+    </table>
   </div>
   <div class="pagination flex">
     {{#paginate totalPages}}
-      <button class="pagination__btn"  form="searchForm" name="page" value="{{this}}">
+      <button
+        class="pagination__btn"
+        form="searchForm"
+        name="page"
+        value="{{this}}"
+      >
         {{this}}
       </button>
     {{/paginate}}

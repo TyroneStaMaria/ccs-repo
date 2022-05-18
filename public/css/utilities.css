@@ -52,6 +52,10 @@
   color: var(--color-white);
 }
 
+.text-red {
+  color: #ed2939;
+}
+
 /* typography */
 .font-heading {
   font-family: var(--font-family-heading);

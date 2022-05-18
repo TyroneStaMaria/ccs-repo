@@ -49,3 +49,29 @@
 .article__list h2 {
   text-align: center;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr,
+td,
+th {
+  border: 1px solid var(--color-dark-2);
+  padding: 15px;
+}
+
+.article-title a {
+  color: var(--color-primary);
+  width: 100%;
+  display: block;
+}
+
+.article-title a:hover {
+  text-decoration: underline;
+}
+
+.delete-article {
+  width: 10%;
+}
