@@ -2,8 +2,8 @@
 
 ## How to Run
 
-1. Run `npm run migration-up` to migrate the local database.
-2. Run `npm install` to download required dependencies.
+1. Run `npm install` to download required dependencies.
+2. Run `npm run migration-up` to migrate the local database.
 3. To start the server run `npm run start`.
 
 ### Features
