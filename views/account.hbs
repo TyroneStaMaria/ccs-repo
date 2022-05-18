@@ -1,10 +1,13 @@
 <link rel="stylesheet" href="/css/account.css" />
-<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/forms.css" />
 <link rel="stylesheet" href="/css/sidebar.css" />
 {{>account-sidebar}}
 <section class="padded ">
   <div class="container">
     <h1 class="text-primary">{{user.firstName}} {{user.lastName}}</h1>
+    <br />
+    <h3>Edit Account</h3>
+    <hr />
     <form action="/users/edit-account/{{userId}}?_method=PUT" method="POST">
       <div class="flex form__items">
         <label for="email">Email Address</label>
