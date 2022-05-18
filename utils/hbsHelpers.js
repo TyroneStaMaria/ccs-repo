@@ -1,6 +1,4 @@
-const { checkIfFavorited } = require("./helpers");
-const User = require("../models/User");
-const Article = require("../models/Article");
+const { DateTime } = require("luxon");
 
 const helpers = {
   parseJSON: (data, options) => {
@@ -13,21 +11,16 @@ const helpers = {
     }
     return ret;
   },
-  checkFavorite: function (articleId, userId, options) {
-    let buttonName = "Default";
-    return options.fn("Add to Favorites");
-    // Article.findById(articleId.valueOf()).then((article) => {
-    //   User.findById(userId).then((user) => {
-    //     // buttonName = checkIfFavorited(article, user.favorites)
-    //     //   ? "Remove from Favorites"
-    //     //   : "Add to Favorites";
-    //     return options.fn(buttonName);
-    //   });
-    // });
-  },
   trimString: (data, options) => {
     const trimmed = data.substring(0, 300);
     return options.fn(trimmed + "...");
+  },
+  convertDateString: (data, options) => {
+    if (data instanceof Date) {
+      const date = DateTime.fromJSDate(data).toFormat("MMMM dd, yyyy");
+      return options.fn(date);
+    }
+    return "";
   },
 };
 

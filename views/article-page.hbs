@@ -9,6 +9,14 @@
       {{/each}}
     </p>
   </div>
+  <div>
+    <p>
+      <b>Publication Date:</b>
+      {{#convertDateString article.publicationDate}}
+        {{this}}
+      {{/convertDateString}}
+    </p>
+  </div>
   <div class="flex buttons__container">
     <button class="button">
       <span class="material-symbols-outlined">

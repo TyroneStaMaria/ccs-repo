@@ -9,6 +9,13 @@
       {{this.name}},
     {{/each}}
   </small>
+  <br />
+  <small>
+    <b>Publication Date:</b>
+    {{#convertDateString this.publicationDate}}
+      {{this}}
+    {{/convertDateString}}
+  </small>
   <p class="article__abstract">
     {{#trimString abstract}}
       {{this}}

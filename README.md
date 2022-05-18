@@ -28,3 +28,4 @@ User     |tyrone.stamaria35@gmail.com|123456    |
 - [x] Remove Article in Favorites
 - [ ] Add article to repository
 - [ ] Approve added article
+- [ ] Delete article
