@@ -6,6 +6,13 @@
 2. Run `npm run migration-up` to migrate the local database.
 3. To start the server run `npm run start`.
 
+
+## Premade Account Details
+Role     | Email                     | Password |
+---------|---------------------------|----------|
+Moderator|tyrone_stamaria@dlsu.edu.ph|123456    |
+User     |tyrone.stamaria35@gmail.com|123456    |
+
 ### Features
 
 - [x] Log-in
@@ -21,8 +28,3 @@
 - [x] Remove Article in Favorites
 - [ ] Add article to repository
 - [ ] Approve added article
-
-### TODO
-
-- [ ] Add route guarding
-- [x] Improve form validation
