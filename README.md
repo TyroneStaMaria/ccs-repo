@@ -3,15 +3,14 @@
 ## How to Run
 
 1. Run `npm install` to download required dependencies.
-2. Run `npm run migration-up` to migrate the local database.
-3. To start the server run `npm run start`.
-
+2. To start the server run `npm run start`.
 
 ## Premade Account Details
-Role     | Email                     | Password |
----------|---------------------------|----------|
-Moderator|tyrone_stamaria@dlsu.edu.ph|123456    |
-User     |tyrone.stamaria35@gmail.com|123456    |
+
+| Role      | Email                       | Password |
+| --------- | --------------------------- | -------- |
+| Moderator | tyrone_stamaria@dlsu.edu.ph | 123456   |
+| User      | tyrone.stamaria35@gmail.com | 123456   |
 
 ### Features
 

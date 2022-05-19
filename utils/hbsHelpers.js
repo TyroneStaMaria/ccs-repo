@@ -17,8 +17,7 @@ const helpers = {
   },
   convertDateString: (data, options) => {
     if (data instanceof Date) {
-      const date = DateTime.fromJSDate(data).toFormat("MMMM dd, yyyy");
-      return options.fn(date);
+      return options.fn(data.getFullYear());
     }
     return "";
   },

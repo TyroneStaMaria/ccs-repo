@@ -5,7 +5,7 @@
   <div class="container">
     <h1 class="text-primary">{{article.title}}</h1>
     <div class="authors">
-      <p><span>Authors: </span>
+      <p><b>Authors: </b>
         {{#each article.authors}}
           {{this.name}},
         {{/each}}
@@ -13,10 +13,18 @@
     </div>
     <div>
       <p>
-        <b>Publication Date:</b>
+        <b>Year Published:</b>
         {{#convertDateString article.publicationDate}}
           {{this}}
         {{/convertDateString}}
+      </p>
+      <p>
+        <b>Keywords:</b>
+        {{#if article.keywords}}
+          {{#each article.keywords}}
+            {{this}},
+          {{/each}}
+        {{/if}}
       </p>
     </div>
     <div class="flex buttons__container">
