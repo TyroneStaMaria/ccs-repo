@@ -57,3 +57,7 @@ th {
 .delete-article a span {
   font-size: 32px;
 }
+
+a.text-red:hover {
+  color: #b11d29;
+}

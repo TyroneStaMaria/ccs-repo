@@ -1,9 +1,5 @@
 const Article = require("../models/Article");
-const {
-  identifyFavoriteArticles,
-  getYearFilter,
-  aggregateArticles,
-} = require("../utils/helpers");
+const { getYearFilter, aggregateArticles } = require("../utils/helpers");
 
 async function viewArticle(req, res) {
   const article = await Article.findById(req.params.id).lean();
@@ -31,11 +27,9 @@ async function searchArticles(req, res) {
       }
     );
 
-    const articles = await identifyFavoriteArticles(req.session.user, docs);
-
     return res.render("moderator/article-list", {
       title: "Articles",
-      articles: articles,
+      articles: docs,
       isArticle: true,
       totalPages,
       layout: "mod.hbs",
