@@ -24,6 +24,7 @@ Here are the details of example accounts. If you want to use another `user` acco
 - [x] Edit Account
 - [ ] Delete Account (Done with view only)
 - [x] View Articles
+- [x] Search Articles
 - [x] View Article
 - [x] Add Article to Favorites
 - [x] View Article in Favorites

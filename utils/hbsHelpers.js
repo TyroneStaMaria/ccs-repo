@@ -18,6 +18,9 @@ const helpers = {
   convertDateString: (data, options) => {
     if (data instanceof Date) {
       return options.fn(data.getFullYear());
+    } else if (typeof data === "string") {
+      const date = new Date(data);
+      return options.fn(date.getFullYear());
     }
     return "";
   },

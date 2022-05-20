@@ -3,7 +3,6 @@ const favButtons = document.querySelectorAll(".favorite-button");
 favButtons.forEach((button) => {
   button.addEventListener("click", async (event) => {
     const articleId = button.value;
-    console.log(articleId);
     const res = await fetch("/users/favorites", {
       headers: {
         "Content-Type": "application/json",
