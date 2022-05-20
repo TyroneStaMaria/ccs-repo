@@ -1,7 +1,7 @@
 require("dotenv").config();
 const app = require("./app");
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 
 const DB_URI = process.env.DB_URI_PROD; //TODO: change to prod once deployed
