@@ -122,10 +122,23 @@ async function editAccount(req, res) {
   return res.redirect("/login");
 }
 
+async function deleteAccount(req, res) {
+  await User.findByIdAndDelete(req.params.id);
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (!err) {
+        res.clearCookie("loginSession");
+        return res.redirect("/");
+      }
+    });
+  }
+}
+
 module.exports = {
   createUser,
   login,
   logout,
   toggleFavoriteArticles,
   editAccount,
+  deleteAccount,
 };

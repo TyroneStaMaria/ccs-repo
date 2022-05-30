@@ -22,7 +22,7 @@ Here are the details of example accounts. If you want to use another `user` acco
 - [x] Register
 - [x] View Account
 - [x] Edit Account
-- [ ] Delete Account (Done with view only)
+- [x] Delete Account
 - [x] View Articles
 - [x] Search Articles
 - [x] View Article

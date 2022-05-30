@@ -10,7 +10,9 @@
       <button class="button button--outline" onclick="closeModal()">
         Cancel
       </button>
-      <button class="button button--danger">Delete</button>
+      <form action="/users/delete/{{userId}}?_method=DELETE" method="POST">
+        <button id="deleteBtn" class="button button--danger" >Delete</button>
+      </form>
     </div>
   </div>
 </div>
