@@ -4,6 +4,7 @@
   --color-dark-2: #3b3e42;
   --color-gray: #f9f9f9;
   --color-white: #ffffff;
+  --color-danger: var(--color-danger);
 
   --font-size-xxl: 6rem;
   --font-size-xl: 5rem;

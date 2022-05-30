@@ -43,7 +43,7 @@
 }
 
 .error-msg small {
-  color: #ed2939;
+  color: var(--color-danger);
 }
 
 .success-msg {

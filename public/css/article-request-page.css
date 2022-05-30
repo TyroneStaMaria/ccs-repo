@@ -1,8 +1,8 @@
 .reject-button {
-  border-color: #ed2939;
-  --color-text: #ed2939;
+  border-color: var(--color-danger);
+  --color-text: var(--color-danger);
 }
 
 .reject-button:hover {
-  background-color: #ed2939 !important;
+  background-color: var(--color-danger) !important;
 }
