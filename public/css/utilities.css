@@ -131,24 +131,29 @@ section.padded {
 :root,
 .button {
   --color-background: var(--color-primary);
+  --color-background-hover: #39a387;
   --color-text: var(--color-white);
+  --color-border: var(--color-primary);
+  --color-border-hover: #39a387;
 }
 
 .button--danger {
   --color-background: var(--color-danger);
+  --color-background-hover: #b81f2c;
   --color-text: var(--color-white);
+  --color-border: var(--color-danger);
+  --color-border-hover: #b81f2c;
 }
 
 .button--outline {
+  --color-text: var(--color-border);
   --color-background: var(--color-white);
-  --color-text: var(--color-primary);
-  border: 2px solid var(--color-background);
 }
 
 .button {
   background-color: var(--color-background);
   color: var(--color-text);
-
+  border: 2px solid var(--color-border);
   display: block;
   text-align: center;
   min-width: 120px;
@@ -161,11 +166,11 @@ section.padded {
   transition: all ease-in-out 300ms;
 }
 .button:hover {
-  background-color: var(--color-background);
-  filter: brightness(0.85);
+  background-color: var(--color-background-hover);
+  border-color: var(--color-border-hover);
 }
 
 .button.button--outline:hover {
-  background-color: var(--color-background);
+  background-color: var(--color-background-hover);
   color: var(--color-white);
 }
