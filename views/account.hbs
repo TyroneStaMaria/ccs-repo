@@ -2,6 +2,18 @@
 <link rel="stylesheet" href="/css/forms.css" />
 <link rel="stylesheet" href="/css/sidebar.css" />
 {{>account-sidebar}}
+
+<div class="delete-modal" onclick="closeModal()">
+  <div class="delete-modal__content">
+    <h3>Are you sure you want to delete your account?</h3>
+    <div class="flex">
+      <button class="button button--outline" onclick="closeModal()">
+        Cancel
+      </button>
+      <button class="button button--danger">Delete</button>
+    </div>
+  </div>
+</div>
 <section class="padded ">
   <div class="container">
     <h1 class="text-primary">{{user.firstName}} {{user.lastName}}</h1>
@@ -42,7 +54,9 @@
       <h3 class="text-red">Delete Account</h3>
       <hr />
       <p>Once you delete your account, there is no going back. Please be certain.</p>
-      <button class="button">Delete Account</button>
+      <button class="button button--danger" onclick="openModal()">Delete Account</button>
     </div>
   </div>
 </section>
+
+<script src="/js/account.js"></script>
