@@ -19,7 +19,7 @@ router.get("/", [moderatorOnlyRoute], async (req, res) => {
   const years = Array.isArray(year) ? year : [year];
   const yearsFilter = getYearFilter(years);
 
-  const articlesAggregate = aggregateArticles(q, yearsFilter, false);
+  const articlesAggregate = aggregateArticles(q, yearsFilter, "pending");
 
   const { docs, totalPages } = await Article.aggregatePaginate(
     articlesAggregate,

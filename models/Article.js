@@ -40,9 +40,10 @@ const Article = new Schema({
     default: false,
   },
 
-  approved: {
-    type: Boolean,
-    default: false,
+  status: {
+    type: String,
+    enum: ["rejected", "pending", "approved"],
+    default: "pending",
   },
 });
 

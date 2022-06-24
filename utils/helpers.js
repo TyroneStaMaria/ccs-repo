@@ -36,14 +36,14 @@ function getYearFilter(years) {
   return yearsFilter;
 }
 
-function aggregateArticles(q, yearsFilter, approved = true) {
+function aggregateArticles(q, yearsFilter, status = "approved") {
   return Article.aggregate([
     {
       $match: {
         $and: [
           { title: { $regex: new RegExp(q, "i") } },
           { $or: [...yearsFilter] },
-          { approved },
+          { status },
         ],
       },
     },

@@ -28,7 +28,7 @@ const articles = [
     topics: ["HCI", "DevOps"],
     keywords: ["Programming", "Novice"],
     featured: true,
-    approved: true,
+    status: "approved",
     publicationDate: new Date("2020"),
   },
   {
@@ -65,7 +65,7 @@ const articles = [
       "Game theory—Computer programs",
     ],
     featured: false,
-    approved: true,
+    status: "approved",
     publicationDate: new Date("2022"),
   },
   {
@@ -98,7 +98,7 @@ const articles = [
       "Design Guidelines",
     ],
     featured: true,
-    approved: true,
+    status: "approved",
     publicationDate: new Date("2019"),
   },
   {
@@ -129,7 +129,7 @@ const articles = [
       "Manual Assembly",
     ],
     featured: true,
-    approved: true,
+    status: "approved",
     publicationDate: new Date("2020"),
   },
   {
@@ -169,7 +169,7 @@ const articles = [
       "Gestural Input",
     ],
     featured: false,
-    approved: true,
+    status: "approved",
     publicationDate: new Date("2019"),
   },
   {
@@ -193,7 +193,7 @@ const articles = [
       "piano learning",
     ],
     featured: false,
-    approved: true,
+    status: "approved",
     publicationDate: new Date("2021"),
   },
   {
@@ -227,7 +227,7 @@ const articles = [
       "rumor spread",
     ],
     featured: false,
-    approved: true,
+    status: "approved",
     publicationDate: new Date("2019"),
   },
   {
@@ -268,7 +268,7 @@ const articles = [
     topics: ["Artificial Intelligence", "Robotics"],
     keywords: ["Open data", "information seeking", "user study"],
     featured: false,
-    approved: false,
+    status: "pending",
     publicationDate: new Date("2020"),
   },
   {
@@ -310,7 +310,7 @@ const articles = [
       "Usability testing",
     ],
     featured: false,
-    approved: false,
+    status: "pending",
     publicationDate: new Date("2020"),
   },
   {
@@ -339,7 +339,7 @@ const articles = [
     topics: ["Artificial Intelligence", "Robotics"],
     keywords: [],
     featured: false,
-    approved: false,
+    status: "pending",
     publicationDate: new Date("2020"),
   },
 ];
