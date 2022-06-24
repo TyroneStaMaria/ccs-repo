@@ -27,18 +27,18 @@
       <tbody>
         {{#if articles}}
           {{#each articles}}
-            <tr>
+            <tr id="{{this._id}}">
               <td class="article-title">
                 <a href="/moderator/article/{{this._id}}">
                   {{this.title}}
                 </a>
               </td>
               <td class="delete-article">
-                <a class="text-red" href="#">
+                <button class="text-red remove" value="{{this._id}}">
                   <span class="material-symbols-outlined">
                     delete
                   </span>
-                </a>
+                </button>
               </td>
             </tr>
           {{/each}}
@@ -62,3 +62,4 @@
   </div>
 </section>
 <script src="/js/articles.js"></script>
+<script src="/js/moderator.js"></script>

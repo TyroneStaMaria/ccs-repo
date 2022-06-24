@@ -8,6 +8,7 @@ const {
   viewArticle,
   searchArticles,
   rejectOrApproveArticle,
+  deleteArticle,
 } = require("../controllers/moderator-controller");
 
 router.get("/article/:id", [moderatorOnlyRoute], viewArticle);
@@ -43,5 +44,7 @@ router.put(
   [moderatorOnlyRoute],
   rejectOrApproveArticle
 );
+
+router.delete("/articles/delete/:id", [moderatorOnlyRoute], deleteArticle);
 
 module.exports = router;

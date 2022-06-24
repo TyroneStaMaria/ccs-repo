@@ -52,4 +52,14 @@ async function rejectOrApproveArticle(req, res) {
   }
 }
 
-module.exports = { viewArticle, searchArticles, rejectOrApproveArticle };
+async function deleteArticle(req, res) {
+  await Article.findByIdAndDelete(req.params.id);
+  return res.status(200).json({ success: true });
+}
+
+module.exports = {
+  viewArticle,
+  searchArticles,
+  rejectOrApproveArticle,
+  deleteArticle,
+};

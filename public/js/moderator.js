@@ -15,6 +15,7 @@ async function rejectOrApproveArticle(status, id) {
   return data;
 }
 
+//TODO: handle errors
 async function addButtonEvents(buttons, status) {
   buttons.forEach((approveBtn) => {
     approveBtn.addEventListener("click", async (event) => {
@@ -29,3 +30,19 @@ async function addButtonEvents(buttons, status) {
 }
 addButtonEvents(approve, "approved");
 addButtonEvents(reject, "rejected");
+
+const remove = document.querySelectorAll(".remove");
+remove.forEach((removeBtn) => {
+  removeBtn.addEventListener("click", async (event) => {
+    const res = await fetch(`/moderator/articles/delete/${removeBtn.value}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      const row = document.getElementById(removeBtn.value);
+      row.remove();
+    }
+  });
+});

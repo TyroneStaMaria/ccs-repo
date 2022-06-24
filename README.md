@@ -30,5 +30,5 @@ Here are the details of example accounts. If you want to use another `user` acco
 - [x] View Article in Favorites
 - [x] Remove Article in Favorites
 - [ ] Add article to repository (Done with view only)
-- [ ] Approve added article (Done with view only)
-- [ ] Delete article (Done with view only)
+- [x] Approve added article
+- [x] Delete article
