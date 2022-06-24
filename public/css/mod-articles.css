@@ -61,3 +61,7 @@ th {
 a.text-red:hover {
   color: #b11d29;
 }
+
+button {
+  background: none;
+}

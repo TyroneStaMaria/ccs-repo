@@ -7,6 +7,7 @@ const { getYearFilter, aggregateArticles } = require("../utils/helpers");
 const {
   viewArticle,
   searchArticles,
+  rejectOrApproveArticle,
 } = require("../controllers/moderator-controller");
 
 router.get("/article/:id", [moderatorOnlyRoute], viewArticle);
@@ -36,5 +37,11 @@ router.get("/", [moderatorOnlyRoute], async (req, res) => {
     totalPages,
   });
 });
+
+router.put(
+  "/articles/status/:id",
+  [moderatorOnlyRoute],
+  rejectOrApproveArticle
+);
 
 module.exports = router;

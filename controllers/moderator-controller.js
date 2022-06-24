@@ -39,4 +39,17 @@ async function searchArticles(req, res) {
   }
 }
 
-module.exports = { viewArticle, searchArticles };
+async function rejectOrApproveArticle(req, res) {
+  try {
+    const article = await Article.findByIdAndUpdate(
+      req.params.id,
+      { status: req.body.status },
+      { new: true }
+    );
+    return res.status(200).json({ success: true });
+  } catch (err) {
+    return res.status(400).json({ success: false, error: err });
+  }
+}
+
+module.exports = { viewArticle, searchArticles, rejectOrApproveArticle };
