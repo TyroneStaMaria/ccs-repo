@@ -4,7 +4,7 @@ const helpers = {
   parseJSON: (data, options) => {
     return options.fn(JSON.parse(data));
   },
-  paginate: function (data, options) {
+  paginate: (data, options) => {
     let ret = "";
     for (let i = 1; i <= data; i++) {
       ret += options.fn(i);
@@ -23,6 +23,13 @@ const helpers = {
       return options.fn(date.getFullYear());
     }
     return "";
+  },
+  isApproved: (data, options) => {
+    if (data === "approved") {
+      return options.fn(data);
+    } else if (data === "pending") {
+      return options.inverse(data);
+    }
   },
 };
 

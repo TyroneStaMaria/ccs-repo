@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="/css/article-page.css" />
 <link rel="stylesheet" href="/css/article-request-page.css" />
+<link rel="stylesheet" href="/css/modal.css" />
+{{>modal buttonName='Remove' buttonColor='button--danger'}}
 
 <section class="padded">
-  <div class="container">
+  <div class="container" id="{{article._id}}" data-title="{{article.title}}">
     <h1 class="text-primary">{{article.title}}</h1>
     <div class="authors">
       <p><b>Authors: </b>
@@ -47,15 +49,23 @@
       <h4>Abstract</h4>
       <p>{{article.abstract}}</p>
     </div>
-    {{#if article.approved}}
-      <div>
-
+    {{#isApproved article.status}}
+      <div class="flex buttons__container">
+        <button
+          class="button remove button--outline button--danger"
+          value="{{@root.article._id}}"
+        >
+          <span class="material-symbols-outlined">
+            delete
+          </span>
+          Delete Article
+        </button>
       </div>
     {{else}}
       <div class="flex buttons__container">
         <button
-          class="button reject-button button--outline"
-          value="{{article._id}}"
+          class="button reject button--outline button--danger"
+          value="{{@root.article._id}}"
         >
           <span class="material-symbols-outlined">
             cancel
@@ -63,8 +73,8 @@
           Reject Article
         </button>
         <button
-          class="button approve-button button--outline"
-          value="{{article._id}}"
+          class="button approve button--outline"
+          value="{{@root.article._id}}"
         >
           <span class="material-symbols-outlined">
             check_circle
@@ -72,6 +82,8 @@
           Approve Article
         </button>
       </div>
-    {{/if}}
+    {{/isApproved}}
   </div>
 </section>
+
+<script src="/js/moderator.js"></script>

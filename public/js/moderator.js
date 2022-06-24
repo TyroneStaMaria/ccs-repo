@@ -39,7 +39,6 @@ function confirmationMessage(message, { status, id, fn } = {}) {
   document.getElementById("deleteBtn").onclick = async () => {
     const data = await fn({ status: status, id: id });
     if (data.success) {
-      // const row = document.getElementById(id);
       row.remove();
       closeModal();
     }
