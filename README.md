@@ -32,3 +32,5 @@ Here are the details of example accounts. If you want to use another `user` acco
 - [ ] Add article to repository (Done with view only)
 - [x] Approve added article
 - [x] Delete article
+- [x] Reject added articles
+- [ ] Add articles to featured articles list
