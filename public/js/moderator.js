@@ -1,7 +1,55 @@
 const approve = document.querySelectorAll(".approve");
 const reject = document.querySelectorAll(".reject");
+const remove = document.querySelectorAll(".remove");
 
-async function rejectOrApproveArticle(status, id) {
+function openModal() {
+  const modal = document.querySelector(".modal");
+  modal.style.display = "flex";
+  return modal;
+}
+
+function closeModal() {
+  const modal = document.querySelector(".modal");
+  modal.style.display = "none";
+}
+
+function modifyModalButton(status, btn) {
+  switch (status) {
+    case "rejected":
+      btn.innerText = "Reject";
+      btn.classList.add("button--danger");
+      break;
+    case "approved":
+      btn.innerText = "Approve";
+      btn.classList.remove("button--danger");
+      break;
+  }
+}
+
+function confirmationMessage(message, { status, id, fn } = {}) {
+  const modal = openModal();
+  const row = document.getElementById(id);
+  modal.querySelector(
+    "#modal-message"
+  ).innerHTML = `${message} <br/> <span class='text-primary'>${row.getAttribute(
+    "data-title"
+  )}</span>`;
+
+  modifyModalButton(status, document.getElementById("deleteBtn"));
+  document.getElementById("deleteBtn").onclick = async () => {
+    const data = await fn({ status: status, id: id });
+    if (data.success) {
+      // const row = document.getElementById(id);
+      row.remove();
+      closeModal();
+    }
+  };
+  document.getElementById("cancelBtn").onclick = () => {
+    closeModal();
+  };
+}
+
+async function rejectOrApproveArticle({ status, id } = {}) {
   const res = await fetch(`/moderator/articles/status/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -15,34 +63,33 @@ async function rejectOrApproveArticle(status, id) {
   return data;
 }
 
-//TODO: handle errors
-async function addButtonEvents(buttons, status) {
-  buttons.forEach((approveBtn) => {
-    approveBtn.addEventListener("click", async (event) => {
-      const data = await rejectOrApproveArticle(status, approveBtn.value);
+async function deleteArticle({ id } = {}) {
+  const res = await fetch(`/moderator/articles/delete/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
 
-      if (data.success) {
-        const row = document.getElementById(approveBtn.value);
-        row.remove();
-      }
+  const data = await res.json();
+
+  return data;
+}
+
+//TODO: handle errors
+async function addButtonEvents(buttons, message, { status, fn } = {}) {
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", async (event) => {
+      confirmationMessage(message, { status: status, id: btn.value, fn: fn });
     });
   });
 }
-addButtonEvents(approve, "approved");
-addButtonEvents(reject, "rejected");
-
-const remove = document.querySelectorAll(".remove");
-remove.forEach((removeBtn) => {
-  removeBtn.addEventListener("click", async (event) => {
-    const res = await fetch(`/moderator/articles/delete/${removeBtn.value}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    const data = await res.json();
-    if (data.success) {
-      const row = document.getElementById(removeBtn.value);
-      row.remove();
-    }
-  });
+addButtonEvents(approve, "Are you sure you want to approve this article:", {
+  status: "approved",
+  fn: rejectOrApproveArticle,
+});
+addButtonEvents(reject, "Are you sure you want to reject this article:", {
+  status: "rejected",
+  fn: rejectOrApproveArticle,
+});
+addButtonEvents(remove, "Are you sure you want to delete this article:", {
+  fn: deleteArticle,
 });

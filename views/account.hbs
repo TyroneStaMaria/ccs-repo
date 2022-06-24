@@ -1,21 +1,11 @@
 <link rel="stylesheet" href="/css/account.css" />
 <link rel="stylesheet" href="/css/forms.css" />
 <link rel="stylesheet" href="/css/sidebar.css" />
+<link rel="stylesheet" href="/css/modal.css">
 {{>account-sidebar}}
 
-<div class="delete-modal" onclick="closeModal()">
-  <div class="delete-modal__content">
-    <h3>Are you sure you want to delete your account?</h3>
-    <div class="flex">
-      <button class="button button--outline" onclick="closeModal()">
-        Cancel
-      </button>
-      <form action="/users/delete/{{userId}}?_method=DELETE" method="POST">
-        <button id="deleteBtn" class="button button--danger" >Delete</button>
-      </form>
-    </div>
-  </div>
-</div>
+{{>modal buttonName='Delete' buttonColor='button--danger'}}
+
 <section class="padded ">
   <div class="container">
     <h1 class="text-primary">{{user.firstName}} {{user.lastName}}</h1>

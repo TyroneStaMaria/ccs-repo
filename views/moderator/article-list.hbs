@@ -1,4 +1,8 @@
 <link rel="stylesheet" href="/css/mod-articles.css" />
+<link rel="stylesheet" href="/css/modal.css" />
+
+{{>modal buttonName='Delete' buttonColor='button--danger'}}
+
 <section class="search-section">
   <form
     id="searchForm"
@@ -27,7 +31,7 @@
       <tbody>
         {{#if articles}}
           {{#each articles}}
-            <tr id="{{this._id}}">
+            <tr id="{{this._id}}" data-title="{{this.title}}">
               <td class="article-title">
                 <a href="/moderator/article/{{this._id}}">
                   {{this.title}}
