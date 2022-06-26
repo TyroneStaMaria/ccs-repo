@@ -14,6 +14,7 @@ async function getArticles(req, res) {
     console.log(err);
   }
 }
+
 async function searchArticles(req, res) {
   try {
     const { q, year, page } = req.query;
@@ -44,4 +45,19 @@ async function searchArticles(req, res) {
   }
 }
 
-module.exports = { getArticles, searchArticles };
+async function addArticle(req, res) {
+  const article = {
+    title: req.body.title,
+    authors: req.body.authors,
+    abstract: req.body.abstract,
+    publicationDate: new Date(req.body.date),
+    keywords: req.body.keywords.split(", "),
+    articleFile: req.file.filename,
+  };
+  const newArticle = new Article({ ...article });
+
+  await newArticle.save();
+  return res.status(200).redirect("back");
+}
+
+module.exports = { getArticles, searchArticles, addArticle };

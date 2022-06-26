@@ -5,11 +5,6 @@ const template = `
       <br>
       <input type="text" name="authorName[]" class="form__input">
     </div>
-    <div>
-      <label for="affiliation">Affiliation</label>
-      <br>
-      <input type="text" name="affiliation" class="form__input">
-    </div>
     <button type="button" class="remove-author" onclick="removeAuthor(this)" >
       <span class="material-symbols-outlined">
         delete

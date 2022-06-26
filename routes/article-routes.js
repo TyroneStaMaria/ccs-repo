@@ -3,7 +3,7 @@ const router = express.Router();
 const {
   getArticles,
   searchArticles,
-  toggleFavoriteArticles,
+  addArticle,
 } = require("../controllers/article-controller");
 
 const {
@@ -12,7 +12,10 @@ const {
   moderatorOnlyRoute,
 } = require("../middleware/routeAuthentication");
 
+const upload = require("../middleware/multer");
+
 router.get("/get-articles", getArticles);
 router.get("/search", userOnlyRoute, searchArticles);
+router.post("/add-article", upload.single("file"), addArticle);
 
 module.exports = router;

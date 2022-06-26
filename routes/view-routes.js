@@ -37,10 +37,10 @@ router.get("/account/:id", [requireLogin, userOnlyRoute], async (req, res) => {
   return res.render("account", { title: name, user });
 });
 
-router.get("/add-paper", [requireLogin], (req, res) => {
+router.get("/add-article", [requireLogin], (req, res) => {
   const layout = req.session.user.role === "user" ? "main.hbs" : "mod.hbs";
   const isModView = req.session.user.role === "user" ? false : true;
-  return res.render("add-paper", { title: "Add Paper", layout, isModView });
+  return res.render("add-paper", { title: "Add Article", layout, isModView });
 });
 
 router.get("/article/:id", [userOnlyRoute], async (req, res) => {
