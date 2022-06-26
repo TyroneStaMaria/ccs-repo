@@ -27,7 +27,8 @@
     "lodash": "^4.17.21",
     "method-override": "^3.0.0",
     "mongoose": "^6.2.4",
-    "mongoose-aggregate-paginate-v2": "^1.0.6"
+    "mongoose-aggregate-paginate-v2": "^1.0.6",
+    "multer": "*"
   },
   "devDependencies": {
     "migrate-mongo": "^9.0.0",
