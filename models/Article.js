@@ -12,24 +12,12 @@ const Article = new Schema({
     type: String,
     required: true,
   },
-  authors: [
-    {
-      name: {
-        type: String,
-        required: true,
-      },
-      affiliations: [String],
-    },
-  ],
+  authors: [String],
   articleFile: {
-    type: Buffer,
+    type: String,
   },
   publicationDate: {
     type: Date,
-  },
-  topics: {
-    type: Array,
-    required: true,
   },
   keywords: {
     type: Array,
