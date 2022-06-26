@@ -28,7 +28,8 @@
     "method-override": "^3.0.0",
     "mongoose": "^6.2.4",
     "mongoose-aggregate-paginate-v2": "^1.0.6",
-    "multer": "*"
+    "multer": "*",
+    "multer-s3": "^3.0.1"
   },
   "devDependencies": {
     "migrate-mongo": "^9.0.0",

@@ -52,7 +52,7 @@ async function addArticle(req, res) {
     abstract: req.body.abstract,
     publicationDate: new Date(req.body.date),
     keywords: req.body.keywords.split(", "),
-    articleFile: req.file.filename,
+    articleFile: req.file.location,
   };
   const newArticle = new Article({ ...article });
 

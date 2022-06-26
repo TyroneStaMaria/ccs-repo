@@ -1,15 +1,28 @@
+require("dotenv").config();
+const { S3Client } = require("@aws-sdk/client-s3");
 const multer = require("multer");
-const path = require("path");
+const multerS3 = require("multer-s3");
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../public/uploads"));
+const s3 = new S3Client({
+  credentials: {
+    accessKeyId: process.env.S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
   },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  },
+  region: "ap-southeast-1",
 });
 
-const uploadStorage = multer({ storage });
+const uploadStorage = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: "ccs-repo",
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    metadata: (req, file, cb) => {
+      cb(null, { fieldName: file.fieldname });
+    },
+    key: (req, file, cb) => {
+      cb(null, file.originalname);
+    },
+  }),
+});
 
 module.exports = uploadStorage;
