@@ -29,7 +29,7 @@ Here are the details of example accounts. If you want to use another `user` acco
 - [x] Add Article to Favorites
 - [x] View Article in Favorites
 - [x] Remove Article in Favorites
-- [ ] Add article to repository (Done with view only)
+- [x] Add article to repository
 - [x] Approve added article
 - [x] Delete article
 - [x] Reject added articles

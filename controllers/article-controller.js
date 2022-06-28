@@ -1,4 +1,5 @@
 const Article = require("../models/Article");
+const { validationResult } = require("express-validator");
 
 const {
   identifyFavoriteArticles,
@@ -46,18 +47,24 @@ async function searchArticles(req, res) {
 }
 
 async function addArticle(req, res) {
-  const article = {
-    title: req.body.title,
-    authors: req.body.authors,
-    abstract: req.body.abstract,
-    publicationDate: new Date(req.body.date),
-    keywords: req.body.keywords.split(", "),
-    articleFile: req.file.location,
-  };
-  const newArticle = new Article({ ...article });
+  const errors = validationResult(req);
+  console.log(req.body);
+  if (errors.isEmpty()) {
+    const article = {
+      title: req.body.title,
+      authors: req.body.authors,
+      abstract: req.body.abstract,
+      publicationDate: new Date(req.body.date),
+      keywords: req.body.keywords.split(", "),
+      articleFile: req.file.location,
+    };
+    const newArticle = new Article({ ...article });
 
-  await newArticle.save();
-  return res.status(200).redirect("back");
+    await newArticle.save();
+    return res.status(200).redirect("back");
+  }
+  const messages = errors.array();
+  return res.status(400).send({ errors: messages, success: false });
 }
 
 module.exports = { getArticles, searchArticles, addArticle };

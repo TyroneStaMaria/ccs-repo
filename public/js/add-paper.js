@@ -1,9 +1,9 @@
 const template = `
   <div class="author__details flex" >
     <div>
-      <label for="authorName[]">Author Name</label>
+      <label for="authors[]">Author Name</label>
       <br>
-      <input type="text" name="authorName[]" class="form__input">
+      <input type="text" name="authors[]" class="form__input">
     </div>
     <button type="button" class="remove-author" onclick="removeAuthor(this)" >
       <span class="material-symbols-outlined">
