@@ -1,27 +1,29 @@
-const template = `
-  <div class="author__details flex" >
-    <div>
-      <label for="authors[]">Author Name</label>
-      <br>
-      <input type="text" name="authors[]" class="form__input">
-    </div>
-    <button type="button" class="remove-author" onclick="removeAuthor(this)" >
-      <span class="material-symbols-outlined">
-        delete
-      </span>
-    </button>
-  </div>
-`;
+const yearList = [...Array(new Date().getFullYear() - 1900 + 1).keys()].map(
+  (x) => {
+    return { year: x + 1900 };
+  }
+);
 
-const addButton = document.getElementById("addAuthor");
-const removeButtons = document.querySelectorAll(".remove-author");
-const authorList = document.getElementById("authorList");
-
-addButton.addEventListener("click", (event) => {
-  authorList.insertAdjacentHTML("beforeend", template);
+new TomSelect("#date-input", {
+  maxItems: 1,
+  maxOptions: 500,
+  valueField: "year",
+  labelField: "year",
+  searchField: "year",
+  sortField: [{ direction: "desc", field: "$order" }],
+  options: yearList,
+  create: false,
 });
 
-function removeAuthor(el) {
-  const parent = el.parentNode;
-  authorList.removeChild(parent);
-}
+document.querySelectorAll(".multiple-inputs").forEach((elem) => {
+  new TomSelect(elem, {
+    plugins: {
+      remove_button: {
+        title: "Remove this item",
+      },
+    },
+    persist: false,
+    createOnBlur: true,
+    create: true,
+  });
+});

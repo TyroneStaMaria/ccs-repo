@@ -46,23 +46,26 @@ async function searchArticles(req, res) {
   }
 }
 
-// TODO: fix date selection
 async function addArticle(req, res) {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
-    const { title, authors, abstract, keywords, date } = req.body;
-    const article = {
-      title: title,
-      authors: authors,
-      abstract: abstract,
-      publicationDate: new Date(date),
-      keywords: keywords.split(", "),
-      articleFile: req.file.location,
-    };
-    const newArticle = new Article({ ...article });
+    try {
+      const { title, authors, abstract, keywords, date } = req.body;
+      const article = {
+        title: title,
+        authors: authors.split(","),
+        abstract: abstract,
+        publicationDate: new Date(date),
+        keywords: keywords.split(","),
+        articleFile: req.file.location,
+      };
+      const newArticle = new Article({ ...article });
 
-    await newArticle.save();
-    return res.status(200).redirect("back");
+      await newArticle.save();
+      return res.status(200).send({ errors: [], success: true });
+    } catch (err) {
+      console.log(err);
+    }
   }
   const messages = errors.array();
   return res.status(400).send({ errors: messages, success: false });

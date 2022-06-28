@@ -34,19 +34,9 @@ const registerValidators = [
 
 const articleValidators = [
   body("title").notEmpty().withMessage("Title is required"),
-  body("authors").custom((value) => {
-    if (value.includes("")) {
-      throw new Error("Please provide a name for the authors");
-    }
-    return true;
-  }),
+  body("authors").notEmpty().withMessage("Authors are required"),
   body("date").notEmpty().withMessage("Publication date is required"),
-  body("keywords").custom((value) => {
-    if (value.indexOf(", ") == -1) {
-      throw new Error("Keywords should be comma separated");
-    }
-    return true;
-  }),
+  body("keywords").notEmpty().withMessage("Keywords are required"),
   body("abstract").notEmpty().withMessage("Abstract is required"),
   customValidator,
 ];

@@ -88,11 +88,6 @@ form.addEventListener("submit", async (event) => {
   const data =
     form.id === "addArticleForm" ? formData : formDataToJson(formData);
 
-  formData.forEach((value, key) => {
-    console.log(value);
-    // const sanitizedKey = key.replace("[]", "");
-    // data[sanitizedKey] = key.includes("[]") ? formData.getAll(key) : value;
-  });
   await requestInfo.submit(
     data,
     requestInfo.requestUrl,

@@ -9,52 +9,26 @@
     <h1>Add article</h1>
     <form  enctype="multipart/form-data" id="addArticleForm">
       <div class="flex form__items">
-        <div class="message error-msg" id="title"></div>
         <label for="title">Title</label>
+        <div class="message error-msg" id="title"></div>
         <input type="text" name="title" id="title" class="form__input">
-        <div class="authors__list flex">
-          <h3>Authors</h3>
-          <div id="authorList">
-            <div class="message error-msg" id="authors"></div>
-            <div class="author__details flex">
-              <div>
-                <label for="authors[]">Author Name</label>
-                <br>
-                <input type="text" name="authors[]" class="form__input">
-              </div>
-
-              <button type="button" class="remove-author" onclick="removeAuthor(this)" >
-                <span class="material-symbols-outlined">
-                  delete
-                </span>
-              </button>
-            </div>
-          </div>
-          <div class="flex">
-            
-            <button type="button" class="button button--outline" id="addAuthor">
-              <span class="material-symbols-outlined">
-                add_circle
-              </span>
-              Add author
-            </button>
-          </div>
-        </div>
+        <label for="authors">Authors</label>
+        <div class="message error-msg" id="authors"></div>
+        <input type="text" name="authors"  class="form__input multiple-inputs" placeholder="Comma-separated list (e.g. Author1, Author2)">
         <label for="date">Year Published</label>
         <div class="message error-msg" id="date"></div>
-        <input type="text" name="date" id="date" class="form__input">
+        <select name="date" id="date-input" placeholder="Select Year" class="form__input"></select>
         <label for="keywords">Keywords</label>
         <div class="message error-msg" id="keywords"></div>
-        <input type="text" name="keywords" id="keywords" class="form__input">
+        <input type="text" name="keywords" class="form__input multiple-inputs" placeholder="Comma-separated list (e.g. Keyword1, Keyword2)">
         <label for="file">File</label>
         <div class="message error-msg" id="file"></div>
-        <input type="file" name="file" id="file">
+        <input type="file" name="file" id="file" accept="application/pdf" >
         <label for="abstract">Abstract</label>
         <div class="message error-msg" id="abstract"></div>
         <textarea  name="abstract" id="abstract" cols="30" rows="10" class="form__input"></textarea>
         <button class="button">Submit</button>
       </div>
-
 
     </form>
   </div>
