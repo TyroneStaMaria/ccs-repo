@@ -111,11 +111,7 @@ const articles = [
       "Adaptive Visualisations Using Spatiotemporal and Heuristic Models to Support Piano Learning",
     abstract:
       "Learning the piano is hard and many approaches including pianoroll visualisations have been explored in order to support novices in this process. However, existing piano roll prototypes have not considered the spatiotemporal component (user’s ability to press on a moving target) when generating these visualisations and user modelling. In this PhD, we are going to look into two different approaches: (i) exploring whether existing techniques in singletarget spatiotemporal modelling can be adapted to a multi-target scenario such as when learners use several fingers to press multiple moving targets when playing the piano, and (ii) exploring heuristics by experts marking various difficult parts of songs, and deciding on specific interventions needed for marked parts. Using models and input from the experts we will design and build an adaptive piano roll training system to better support piano learners. We will evaluate and compare these models in various user studies involving novices trying to play piano pieces and develop their improvisation skills. We intend to uncover whether these adaptive visualisations will be helpful in the overall training of piano learners. Additionally, these models and adaptive visualisations will allow us to discover affordances that can potentially improve piano learning in general.",
-    authors: [
-      {
-        name: "Jordan Aiko Deja",
-      },
-    ],
+    authors: ["Jordan Aiko Deja"],
     topics: ["Artificial Intelligence", "Robotics"],
     keywords: [
       "extended reality",

@@ -26,6 +26,7 @@
         <tr>
           <th>Article Title</th>
           <th>Delete Article</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -43,6 +44,13 @@
                     delete
                   </span>
                 </button>
+              </td>
+              <td>
+                {{#if this.featured}}
+                  <button class="button featured" value="{{this._id}}" data-featured="featured">Remove from Featured</button>
+                {{else}}
+                  <button class="button featured" value="{{this._id}}" data-featured="">Add to Featured</button>
+                {{/if}}
               </td>
             </tr>
           {{/each}}

@@ -33,4 +33,4 @@ Here are the details of example accounts. If you want to use another `user` acco
 - [x] Approve added article
 - [x] Delete article
 - [x] Reject added articles
-- [ ] Add articles to featured articles list
+- [x] Add articles to featured articles list

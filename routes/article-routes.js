@@ -4,6 +4,7 @@ const {
   getArticles,
   searchArticles,
   addArticle,
+  toggleFeaturedArticle,
 } = require("../controllers/article-controller");
 
 const {
@@ -24,5 +25,6 @@ router.post(
   articleValidators,
   addArticle
 );
+router.put("/toggle-featured/:id", moderatorOnlyRoute, toggleFeaturedArticle);
 
 module.exports = router;

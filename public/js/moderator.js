@@ -1,6 +1,7 @@
 const approve = document.querySelectorAll(".approve");
 const reject = document.querySelectorAll(".reject");
 const remove = document.querySelectorAll(".remove");
+const featured = document.querySelectorAll(".featured");
 
 function openModal() {
   const modal = document.querySelector(".modal");
@@ -91,4 +92,25 @@ addButtonEvents(reject, "Are you sure you want to reject this article:", {
 });
 addButtonEvents(remove, "Are you sure you want to delete this article:", {
   fn: deleteArticle,
+});
+
+featured.forEach((btn) => {
+  btn.addEventListener("click", async (event) => {
+    const res = await fetch(`/articles/toggle-featured/${btn.value}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      if (btn.getAttribute("data-featured")) {
+        btn.innerHTML = "Add to Featured";
+        btn.setAttribute("data-featured", "");
+        return;
+      }
+      btn.innerHTML = "Remove from Featured";
+      btn.setAttribute("data-featured", "featured");
+      return;
+    }
+  });
 });
