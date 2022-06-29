@@ -27,11 +27,14 @@ const Article = new Schema({
     type: Boolean,
     default: false,
   },
-
   status: {
     type: String,
     enum: ["rejected", "pending", "approved"],
     default: "pending",
+  },
+  citationInfo: {
+    type: String,
+    required: true,
   },
 });
 

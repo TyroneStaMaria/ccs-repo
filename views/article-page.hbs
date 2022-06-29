@@ -1,7 +1,33 @@
+<link rel="stylesheet" href="/css/modal.css" />
 <link rel="stylesheet" href="/css/article-page.css" />
+
+<div class="modal">
+  <div class="modal__content">
+    <p id="modal-message">Loading...</p>
+    <input type="text" name="citation" id="citation" hidden />
+    <button
+      class="copy-citation button button--outline"
+      onclick="copyCitation()"
+      id="copyBtn"
+    >
+      <span class="material-symbols-outlined">
+        content_copy
+      </span>
+      Copy Citation
+    </button>
+    <div class="flex">
+      <button class="button" id="cancelBtn" onclick="closeModal()">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
 
 <section class="padded container">
   <h1 class="text-primary">{{article.title}}</h1>
+  <div>
+    <p><b>DOI:</b> <span id="citationInfo">{{article.citationInfo}}</span></p>
+  </div>
   <div class="authors">
     <p><b>Authors: </b>
       {{#each article.authors}}
@@ -50,7 +76,7 @@
         {{/if}}
       </button>
     {{/if}}
-    <button class="button button--outline">
+    <button class="button button--outline" onclick="openModal()">
       <span class="material-symbols-outlined">
         format_quote
       </span>
@@ -62,3 +88,6 @@
     <p>{{article.abstract}}</p>
   </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/citation-js@0.4.0-8"></script>
+<script src="/js/modal.js"></script>
+<script src="/js/cite.js"></script>

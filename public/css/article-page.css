@@ -15,3 +15,21 @@
 .abstract h4 {
   font-style: italic;
 }
+
+#modal-message {
+  padding: 10px;
+  /* width: 300px; */
+}
+
+.modal .modal__content {
+  gap: 10px;
+}
+.modal .modal__content .copy-citation {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#copyBtn {
+  display: none;
+}

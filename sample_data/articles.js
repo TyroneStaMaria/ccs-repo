@@ -15,28 +15,7 @@ const articles = [
     featured: true,
     status: "approved",
     publicationDate: new Date("2020"),
-  },
-  {
-    title:
-      "Adaptation of an adversarial non-player character through case based reasoning",
-    abstract:
-      "Game development is now turning to other innovations such as applying Artificial Intelligence (AI) techniques [4]. However, such algorithms only make use of simple decision making and still lack the ability to learn [2] One type of game that requires this kind of learning is real time strategy games. This research intends to present the CAN system that is designed as an adversarial Non Player Characters (NPC) that learns strategies in a real time strategy (RTS) game using Case-based Reasoning. Using strategies learned from the past actions of the human player. CAN is able to adapt to current situation and change strategy online.",
-    authors: [
-      "Danny C. Cheng",
-      "Gian Kristian A. Fontanilla",
-      "Anne  Marie M. Africa",
-      "Karmela Angela G. Cortez",
-      "Paul Michael O. Go",
-    ],
-    topics: ["Artificial Intelligence", "Robotics"],
-    keywords: [
-      "Artificial intelligence",
-      "Games of strategy (Mathematics)",
-      "Game theory—Computer programs",
-    ],
-    featured: false,
-    status: "approved",
-    publicationDate: new Date("2022"),
+    citationInfo: "https://doi.org/10.1145/3391203.3391214",
   },
   {
     title:
@@ -58,6 +37,7 @@ const articles = [
     featured: true,
     status: "approved",
     publicationDate: new Date("2019"),
+    citationInfo: "https://doi.org/10.1145/3328243.3328253",
   },
   {
     title:
@@ -80,6 +60,7 @@ const articles = [
     featured: true,
     status: "approved",
     publicationDate: new Date("2020"),
+    citationInfo: "https://doi.org/10.1145/3385378.3385379",
   },
   {
     title:
@@ -105,6 +86,7 @@ const articles = [
     featured: false,
     status: "approved",
     publicationDate: new Date("2019"),
+    citationInfo: "https://doi.org/10.1145/3328243.3328263",
   },
   {
     title:
@@ -124,28 +106,7 @@ const articles = [
     featured: false,
     status: "approved",
     publicationDate: new Date("2021"),
-  },
-  {
-    title:
-      "Drowning Out Rumor: Dynamical Models of the Interaction between Spreaders of and Exposed to Truth and Rumor Spreading",
-    abstract:
-      "Social networking sites have become instrumental in spreading information online, which unfortunately includes rumors and misinformation. Past studies have investigated the spread of rumors without considering that truth may spread simultaneously. This study considers both the spread of truth and rumor and investigates the result of their coexistence in a population. We formulated the spreader-spreader interaction model and the exposedspreader interaction model based on the epidemiological SEIR model. In the spreaderspreader interaction model, the spreaders try to influence the opposing spreaders whereas, in the exposed-spreader interaction model, the spreaders try to influence the exposed individuals from the opposing side. In our study, we calculated the reproduction numbers for truth and rumor, determined the stability of the model at the equilibrium points, and determined an approach for spreading truth while halting rumors. In the spreader-spreader model, we have shown that increasing the removal rate of Spreaders of Rumor decreases the prevalence of rumor in the population. Whereas in the exposed-spreader model, we showed that increasing the conversion rate of Exposed to Rumor to Exposed to Truth significantly increases the amount of Exposed to Truth in the population, thereby making it an effective mechanism for promoting the spread of truth. In conclusion, it is harder to control the information epidemic in the exposed-spreader model but, compared to the spreader-spreader model, information spreads faster according to the exposed-spreader model. For certain information to be endemic to a population, our study proposes that spreaders take advantage during the first few days of the information diffusion process. ",
-    authors: [
-      "Juan Miguel Augusto M. Feria",
-      "Michael Lawrence S. Oliva",
-      "Briane Paul V. Samson",
-      "Angelyn R. Lao",
-    ],
-    topics: ["Artificial Intelligence", "Robotics"],
-    keywords: [
-      "dynamical systems",
-      "information epidemic",
-      "ordinary differential equations",
-      "rumor spread",
-    ],
-    featured: false,
-    status: "approved",
-    publicationDate: new Date("2019"),
+    citationInfo: "https://doi.org/10.1145/3450613.3459656",
   },
   {
     title:
@@ -166,6 +127,7 @@ const articles = [
     featured: false,
     status: "pending",
     publicationDate: new Date("2020"),
+    citationInfo: "https://doi.org/10.1145/3391203.3391219",
   },
   {
     title:
@@ -193,6 +155,7 @@ const articles = [
     featured: false,
     status: "pending",
     publicationDate: new Date("2020"),
+    citationInfo: "https://doi.org/10.1145/3334480.3383046",
   },
   {
     title:
@@ -210,6 +173,7 @@ const articles = [
     featured: false,
     status: "pending",
     publicationDate: new Date("2020"),
+    citationInfo: "https://doi.org/10.3303/CET2188092",
   },
 ];
 
