@@ -1,18 +1,35 @@
 const Cite = require("citation-js");
 
-const info = document.getElementById("citationInfo").textContent;
+function displayCitation(citation, message, copyBtn) {
+  const citationText = document.getElementById("citation");
+  message.innerHTML = citation;
+  citationText.value = citation;
+  copyBtn.style.display = "flex";
+}
 
-Cite.async(info).then((result) => {
+function citeArticle(info) {
+  const message = document.getElementById("modal-message");
+  const result = new Cite(info);
   const citation = result.format("bibliography", {
     format: "text",
     template: "apa",
   });
-  const copyCitation = document.getElementById("citation");
+  displayCitation(citation, message, copyBtn);
+}
+
+async function asyncCite(info) {
+  openModal();
+  const message = document.getElementById("modal-message");
   const copyBtn = document.getElementById("copyBtn");
-  document.getElementById("modal-message").innerHTML = citation;
-  copyCitation.value = citation;
-  copyBtn.style.display = "flex";
-});
+  copyBtn.style.display = "none";
+  message.innerHTML = "Loading...";
+  const result = await Cite.async(info);
+  const citation = result.format("bibliography", {
+    format: "text",
+    template: "apa",
+  });
+  displayCitation(citation, message, copyBtn);
+}
 
 function copyCitation() {
   const copyText = document.getElementById("citation");

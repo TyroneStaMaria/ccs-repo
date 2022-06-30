@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="/css/modal.css" />
 <link rel="stylesheet" href="/css/article-page.css" />
+<link rel="stylesheet" href="/css/citation.css" />
 
 <div class="modal">
   <div class="modal__content">
-    <p id="modal-message">Loading...</p>
+    <p id="modal-message"></p>
     <input type="text" name="citation" id="citation" hidden />
     <button
       class="copy-citation button button--outline"
@@ -88,6 +89,9 @@
     <p>{{article.abstract}}</p>
   </div>
 </section>
-<script src="https://cdn.jsdelivr.net/npm/citation-js@0.4.0-8"></script>
+{{! <script src="https://cdn.jsdelivr.net/npm/citation-js@0.4.0-8"></script> }}
 <script src="/js/modal.js"></script>
 <script src="/js/cite.js"></script>
+<script>
+  citeArticle('{{article.citationInfo}}')
+</script>

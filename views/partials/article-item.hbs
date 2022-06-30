@@ -13,6 +13,13 @@
       {{this}}
     {{/convertDateString}}
   </small>
+  <br />
+  <small>
+    <b>DOI:</b>
+    <span class="citation">
+      {{this.citationInfo}}
+    </span>
+  </small>
   <p class="article__abstract">
     {{#trimString abstract}}
       {{this}}
@@ -34,7 +41,7 @@
         {{/if}}
       </button>
     {{/if}}
-    <button class="flex">
+    <button class="flex" onclick="asyncCite('{{this.citationInfo}}')">
       <span class="material-symbols-outlined">
         format_quote
       </span>
