@@ -4,8 +4,19 @@
 <link rel="stylesheet" href="/css/modal.css">
 {{>account-sidebar}}
 
-{{!-- TODO: update modal implementation --}}
-{{>modal buttonName='Delete' buttonColor='button--danger'}}
+<div class="modal" onclick="closeModal()">
+  <div class="modal__content">
+    <h3>Are you sure you want to delete your account?</h3>
+    <div class="flex">
+      <button class="button button--outline" onclick="closeModal()">
+        Cancel
+      </button>
+      <form action="/users/delete/{{userId}}?_method=DELETE" method="POST">
+        <button id="deleteBtn" class="button button--danger" >Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
 
 <section class="padded ">
   <div class="container">
