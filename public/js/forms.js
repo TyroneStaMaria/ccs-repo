@@ -3,6 +3,8 @@ function showErrors(errors) {
     const errorMsg = document.getElementById(error.param);
     errorMsg.innerHTML = `<small>${error.msg}</small>`;
   });
+  document.getElementById("submitBtn").disabled = false;
+  document.querySelector(".loader").style.display = "none";
 }
 
 function formDataToJson(formData) {
@@ -88,6 +90,8 @@ form.addEventListener("submit", async (event) => {
   const data =
     form.id === "addArticleForm" ? formData : formDataToJson(formData);
 
+  document.getElementById("submitBtn").disabled = true;
+  document.querySelector(".loader").style.display = "block";
   await requestInfo.submit(
     data,
     requestInfo.requestUrl,
