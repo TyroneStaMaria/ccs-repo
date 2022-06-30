@@ -21,6 +21,8 @@
   border: 1px solid #9b9b9b;
   outline: none;
   border-radius: 5px;
+  color: #303030;
+  font-size: 13px;
 }
 
 .form__input:focus {

@@ -3,17 +3,6 @@ const reject = document.querySelectorAll(".reject");
 const remove = document.querySelectorAll(".remove");
 const featured = document.querySelectorAll(".featured");
 
-function openModal() {
-  const modal = document.querySelector(".modal");
-  modal.style.display = "flex";
-  return modal;
-}
-
-function closeModal() {
-  const modal = document.querySelector(".modal");
-  modal.style.display = "none";
-}
-
 function modifyModalButton(status, btn) {
   switch (status) {
     case "rejected":

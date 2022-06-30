@@ -50,7 +50,8 @@ async function addArticle(req, res) {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     try {
-      const { title, authors, abstract, keywords, date } = req.body;
+      const { title, authors, abstract, keywords, date, citationInfo } =
+        req.body;
       const article = {
         title: title,
         authors: authors.split(","),
@@ -58,10 +59,15 @@ async function addArticle(req, res) {
         publicationDate: new Date(date),
         keywords: keywords.split(","),
         articleFile: req.file.location,
+        citationInfo: citationInfo,
       };
       const newArticle = new Article({ ...article });
 
       await newArticle.save();
+      req.flash(
+        "success_msg",
+        "You have successfully uploaded your article. Please wait for the moderator to approve your article."
+      );
       return res.status(200).send({ errors: [], success: true });
     } catch (err) {
       console.log(err);
