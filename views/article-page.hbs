@@ -51,12 +51,12 @@
     <p><b>DOI:</b> <span id="citationInfo">{{article.citationInfo}}</span></p>
   </div>
   <div class="flex buttons__container">
-    <button class="button">
+    <a class="button" href="{{article.articleFile}}" target="_blank">
       <span class="material-symbols-outlined">
         file_download
       </span>
       Download PDF
-    </button>
+    </a>
     {{#if userId}}
       <button
         class="button favorite-button button--outline"
