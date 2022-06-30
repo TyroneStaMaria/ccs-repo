@@ -4,7 +4,7 @@
 
 <div class="modal">
   <div class="modal__content">
-    <p id="modal-message"></p>
+    <p id="modal-citation"></p>
     <input type="text" name="citation" id="citation" hidden />
     <button
       class="copy-citation button button--outline"
@@ -26,9 +26,6 @@
 
 <section class="padded container">
   <h1 class="text-primary">{{article.title}}</h1>
-  <div>
-    <p><b>DOI:</b> <span id="citationInfo">{{article.citationInfo}}</span></p>
-  </div>
   <div class="authors">
     <p><b>Authors: </b>
       {{#each article.authors}}
@@ -51,6 +48,7 @@
         {{/each}}
       {{/if}}
     </p>
+    <p><b>DOI:</b> <span id="citationInfo">{{article.citationInfo}}</span></p>
   </div>
   <div class="flex buttons__container">
     <button class="button">
@@ -89,7 +87,6 @@
     <p>{{article.abstract}}</p>
   </div>
 </section>
-{{! <script src="https://cdn.jsdelivr.net/npm/citation-js@0.4.0-8"></script> }}
 <script src="/js/modal.js"></script>
 <script src="/js/cite.js"></script>
 <script>

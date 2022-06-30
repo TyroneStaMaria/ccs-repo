@@ -8,7 +8,7 @@ function displayCitation(citation, message, copyBtn) {
 }
 
 function citeArticle(info) {
-  const message = document.getElementById("modal-message");
+  const message = document.getElementById("modal-citation");
   const result = new Cite(info);
   const citation = result.format("bibliography", {
     format: "text",
@@ -19,7 +19,7 @@ function citeArticle(info) {
 
 async function asyncCite(info) {
   openModal();
-  const message = document.getElementById("modal-message");
+  const message = document.getElementById("modal-citation");
   const copyBtn = document.getElementById("copyBtn");
   copyBtn.style.display = "none";
   message.innerHTML = "Loading...";

@@ -28,6 +28,14 @@
           {{/each}}
         {{/if}}
       </p>
+      <p>
+        <b>DOI:</b>
+        {{article.citationInfo}}
+      </p>
+      <p>
+        <b>Citation:</b>
+        <span id="citation"></span>
+      </p>
     </div>
     <div class="flex buttons__container">
       <a class="button" href="{{article.articleFile}}" target="_blank">
@@ -37,12 +45,12 @@
         Download PDF
       </a>
 
-      <button class="button button--outline">
+      {{!-- <button class="button button--outline" onclick="openModal()">
         <span class="material-symbols-outlined">
           format_quote
         </span>
         Check Citation
-      </button>
+      </button> --}}
     </div>
 
     <div class="abstract">
@@ -87,3 +95,14 @@
 </section>
 <script src="/js/modal.js"></script>
 <script src="/js/moderator.js"></script>
+<script src="/js/cite.js"></script>
+<script>
+  const message = document.getElementById("citation");
+  const result = new Cite('{{article.citationInfo}}');
+  const citation = result.format("bibliography", {
+    format: "text",
+    template: "apa",
+  });
+  message.innerHTML = citation;
+
+</script>
