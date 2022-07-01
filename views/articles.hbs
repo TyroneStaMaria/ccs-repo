@@ -3,11 +3,7 @@
 <link rel="stylesheet" href="/css/forms.css" />
 <link rel="stylesheet" href="/css/citation.css" />
 
-<div class="overlay">
-  <div class="loader"></div>
-</div>
-
-
+{{>overlay}}
 <div class="modal">
   <div class="modal__content">
     <p id="modal-citation">Loading...</p>
@@ -49,22 +45,6 @@
             </div>
             {{/each}}
           {{/if}}
-          {{!-- <div>
-            <input type="checkbox" name="year" form="searchForm" id="2022" value="2022" />
-            <label for="2022">2022</label>
-          </div>
-          <div>
-            <input type="checkbox" name="year" form="searchForm" id="2021" value="2021" />
-            <label for="2021">2021</label>
-          </div>
-          <div>
-            <input type="checkbox" name="year" form="searchForm" id="2020" value="2020" />
-            <label for="2020">2020</label>
-          </div>
-          <div>
-            <input type="checkbox" name="year" form="searchForm" id="2019" value="2019" />
-            <label for="2019">2019</label>
-          </div> --}}
         </fieldset>
       </div>
     </div>
@@ -87,5 +67,6 @@
   </div>
 </section>
 <script src="/js/articles.js"></script>
+<script src="/js/overlay.js"></script>
 <script src="/js/modal.js"></script>
 <script src="/js/cite.js"></script>

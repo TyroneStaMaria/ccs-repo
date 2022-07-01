@@ -3,9 +3,8 @@
 <link rel="stylesheet" href="/css/modal.css" />
 
 {{>modal buttonName='Delete' buttonColor='button--danger'}}
-<div class="overlay">
-  <div class="loader"></div>
-</div>
+{{>overlay}}
+
 <section class="search-section">
   <form id="searchForm">
     <input
@@ -73,5 +72,6 @@
 </section>
 {{!-- <script src="/js/articles.js"></script> --}}
 <script src="/js/modal.js"></script>
+<script src="/js/overlay.js"></script>
 <script src="/js/moderator-search.js"></script>
 <script src="/js/moderator.js"></script>
