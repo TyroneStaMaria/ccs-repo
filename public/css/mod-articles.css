@@ -65,3 +65,7 @@ a.text-red:hover {
 button {
   background: none;
 }
+
+.feature-article {
+  width: 20%;
+}

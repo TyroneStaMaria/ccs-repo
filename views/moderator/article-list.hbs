@@ -40,11 +40,11 @@
                   </span>
                 </button>
               </td>
-              <td>
+              <td class="feature-article">
                 {{#if this.featured}}
-                  <button class="button featured" value="{{this._id}}" data-featured="featured">Remove from Featured</button>
+                  <button class="button button--outline featured" value="{{this._id}}" data-featured="featured">Remove from Featured</button>
                 {{else}}
-                  <button class="button featured" value="{{this._id}}" data-featured="">Add to Featured</button>
+                  <button class="button button--outline featured" value="{{this._id}}" data-featured="">Add to Featured</button>
                 {{/if}}
               </td>
             </tr>

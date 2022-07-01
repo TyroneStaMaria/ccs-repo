@@ -72,10 +72,10 @@ function tableTemplates(article, status) {
           </span>
         </button>
       </td>
-      <td>
-        <button class="button featured" value="${article._id}" data-featured="${
-      article.featured ? "featured" : ""
-    }">
+      <td class="feature-article">
+        <button class="button button--outline featured" value="${
+          article._id
+        }" data-featured="${article.featured ? "featured" : ""}">
           ${article.featured ? "Remove from Featured" : "Add to Featured"} 
         </button>
       </td>
