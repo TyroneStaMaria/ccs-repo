@@ -1,8 +1,3 @@
-const approve = document.querySelectorAll(".approve");
-const reject = document.querySelectorAll(".reject");
-const remove = document.querySelectorAll(".remove");
-const featured = document.querySelectorAll(".featured");
-
 function modifyModalButton(status, btn) {
   switch (status) {
     case "rejected":
@@ -26,12 +21,11 @@ function confirmationMessage(message, { status, id, fn } = {}) {
   )}</span>`;
 
   modifyModalButton(status, document.getElementById("deleteBtn"));
-  document.getElementById("deleteBtn").onclick = async () => {
+  document.getElementById("deleteBtn").onclick = async (event) => {
     const data = await fn({ status: status, id: id });
     if (data.success) {
-      row.remove();
       closeModal();
-      if (status === "rejected") window.location.replace("/moderator");
+      submitSearch(event);
     }
   };
   document.getElementById("cancelBtn").onclick = () => {
@@ -72,35 +66,44 @@ async function addButtonEvents(buttons, message, { status, fn } = {}) {
     });
   });
 }
-addButtonEvents(approve, "Are you sure you want to approve this article:", {
-  status: "approved",
-  fn: rejectOrApproveArticle,
-});
-addButtonEvents(reject, "Are you sure you want to reject this article:", {
-  status: "rejected",
-  fn: rejectOrApproveArticle,
-});
-addButtonEvents(remove, "Are you sure you want to delete this article:", {
-  fn: deleteArticle,
-});
 
-featured.forEach((btn) => {
-  btn.addEventListener("click", async (event) => {
-    const res = await fetch(`/articles/toggle-featured/${btn.value}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-    });
+function addEvents() {
+  const approve = document.querySelectorAll(".approve");
+  const reject = document.querySelectorAll(".reject");
+  const remove = document.querySelectorAll(".remove");
+  const featured = document.querySelectorAll(".featured");
+  addButtonEvents(approve, "Are you sure you want to approve this article:", {
+    status: "approved",
+    fn: rejectOrApproveArticle,
+  });
+  addButtonEvents(reject, "Are you sure you want to reject this article:", {
+    status: "rejected",
+    fn: rejectOrApproveArticle,
+  });
+  addButtonEvents(remove, "Are you sure you want to delete this article:", {
+    fn: deleteArticle,
+  });
 
-    const data = await res.json();
-    if (data.success) {
-      if (btn.getAttribute("data-featured")) {
-        btn.innerHTML = "Add to Featured";
-        btn.setAttribute("data-featured", "");
+  featured.forEach((btn) => {
+    btn.addEventListener("click", async (event) => {
+      const res = await fetch(`/articles/toggle-featured/${btn.value}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        if (btn.getAttribute("data-featured")) {
+          btn.innerHTML = "Add to Featured";
+          btn.setAttribute("data-featured", "");
+          return;
+        }
+        btn.innerHTML = "Remove from Featured";
+        btn.setAttribute("data-featured", "featured");
         return;
       }
-      btn.innerHTML = "Remove from Featured";
-      btn.setAttribute("data-featured", "featured");
-      return;
-    }
+    });
   });
-});
+}
+
+addEvents();
