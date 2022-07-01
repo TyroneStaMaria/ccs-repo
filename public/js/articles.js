@@ -5,11 +5,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const pages = document.querySelectorAll(".pagination__btn");
   const form = document.getElementById("searchForm");
   const currPage = urlParams.get("page") || 1;
+  const overlay = document.querySelector(".overlay");
 
   pages[currPage - 1].classList.add("pagination__btn--active");
 
   pages.forEach((item) => {
     item.addEventListener("click", (event) => {
+      overlay.style.display = "block";
       form.submit();
     });
   });
@@ -24,6 +26,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   yearCheckboxes.forEach((item) => {
     item.addEventListener("change", (event) => {
+      overlay.style.display = "block";
       form.submit();
     });
   });
