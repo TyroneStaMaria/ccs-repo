@@ -71,10 +71,19 @@ async function getArticles(q, years, page, status = "approved") {
   return { docs, totalPages };
 }
 
+async function listYears() {
+  const distinctYears = await Article.distinct("publicationDate", {
+    status: "approved",
+  });
+
+  return distinctYears.map((year) => year.getFullYear()).sort((a, b) => b - a);
+}
+
 module.exports = {
   checkIfFavorited,
   identifyFavoriteArticles,
   getYearFilter,
   aggregateArticles,
   getArticles,
+  listYears,
 };

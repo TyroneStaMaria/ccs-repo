@@ -41,7 +41,15 @@
       <div class="filter__box">
         <h4>Year</h4>
         <fieldset form="searchForm" name="year" id="yearField">
-          <div>
+          {{#if yearList}}
+            {{#each yearList}}
+            <div>
+              <input type="checkbox" name="year" form="searchForm" id="{{this}}" value="{{this}}" />
+              <label for="{{this}}">{{this}}</label>
+            </div>
+            {{/each}}
+          {{/if}}
+          {{!-- <div>
             <input type="checkbox" name="year" form="searchForm" id="2022" value="2022" />
             <label for="2022">2022</label>
           </div>
@@ -56,7 +64,7 @@
           <div>
             <input type="checkbox" name="year" form="searchForm" id="2019" value="2019" />
             <label for="2019">2019</label>
-          </div>
+          </div> --}}
         </fieldset>
       </div>
     </div>
