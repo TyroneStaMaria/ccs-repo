@@ -1,6 +1,15 @@
 const { body, check } = require("express-validator");
+const DOIValidator = body("citationInfo")
+  .custom((value) => {
+    const doiRegex = '(10[.][0-9]{2,}(?:[.][0-9]+)*/(?:(?![%"#? ])\\S)+)';
+    const pattern = new RegExp(
+      "^(http(s)?\\://)?(dx\\.)?doi\\.org/" + doiRegex + "$"
+    );
 
-const customValidator = check("file")
+    return value.match(pattern);
+  })
+  .withMessage("Please enter a valid DOI");
+const fileValidator = check("file")
   .custom((value, { req }) => {
     if (req.file.mimetype === "application/pdf") {
       return ".pdf";
@@ -38,7 +47,8 @@ const articleValidators = [
   body("date").notEmpty().withMessage("Publication date is required"),
   body("keywords").notEmpty().withMessage("Keywords are required"),
   body("abstract").notEmpty().withMessage("Abstract is required"),
-  customValidator,
+  DOIValidator,
+  fileValidator,
 ];
 
 const editAccountValidators = [
