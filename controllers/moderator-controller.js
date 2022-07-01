@@ -2,12 +2,17 @@ const Article = require("../models/Article");
 const { getYearFilter, aggregateArticles } = require("../utils/helpers");
 
 async function viewArticle(req, res) {
-  const article = await Article.findById(req.params.id).lean();
-  return res.render("moderator/article-page", {
-    title: "Article Request Page",
-    article,
-    layout: "mod.hbs",
-  });
+  try {
+    const article = await Article.findById(req.params.id).lean();
+    if (!article) return res.redirect("/moderator");
+    return res.render("moderator/article-page", {
+      title: "Article Request Page",
+      article,
+      layout: "mod.hbs",
+    });
+  } catch (err) {
+    return res.redirect("/moderator");
+  }
 }
 
 async function searchArticles(req, res) {

@@ -31,6 +31,7 @@ function confirmationMessage(message, { status, id, fn } = {}) {
     if (data.success) {
       row.remove();
       closeModal();
+      if (status === "rejected") window.location.replace("/moderator");
     }
   };
   document.getElementById("cancelBtn").onclick = () => {
