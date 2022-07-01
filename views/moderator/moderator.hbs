@@ -10,21 +10,15 @@
 </div>
 
 <section class="search-section">
-  <form
-    id="searchForm"
-    name="search"
-    action="/moderator"
-    method="GET"
-  >
+  <form id="searchForm">
     <input
       class="search-section__input"
       type="text"
-      id="searchQuery"
       placeholder="Search"
       name="q"
     />
   </form>
-</section
+</section>
 <section class="padded">
   <div class="container">
     <div class="container">
@@ -36,7 +30,7 @@
             <th>Approve Article</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="articleList">
           {{#if articles}}
             {{#each articles}}
               <tr id="{{this._id}}" data-title="{{this.title}}">
@@ -66,13 +60,13 @@
           {{/if}}
         </tbody>
       </table>
+      <input type="hidden" form="searchForm" name="page" value="1" id="page">
       <div class="pagination flex">
         {{#paginate totalPages}}
           <button
             class="pagination__btn"
-            form="searchForm"
-            name="page"
             value="{{this}}"
+            onclick="handlePagination(this);"
           >
             {{this}}
           </button>
@@ -81,6 +75,7 @@
     </div>
   </div>
 </section>
-<script src="/js/articles.js"></script>
+{{!-- <script src="/js/articles.js"></script> --}}
 <script src="/js/modal.js"></script>
+<script src="/js/moderator-search.js"></script>
 <script src="/js/moderator.js"></script>

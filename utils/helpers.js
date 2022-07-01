@@ -37,7 +37,6 @@ function getYearFilter(years) {
 }
 
 function aggregateArticles(q, yearsFilter, status = "approved") {
-  // Article.createIndexes({ keywords: 1 });
   return Article.aggregate([
     {
       $match: {
@@ -56,9 +55,26 @@ function aggregateArticles(q, yearsFilter, status = "approved") {
   ]);
 }
 
+async function getArticles(q, years, page, status = "approved") {
+  const yearsFilter = getYearFilter(years);
+
+  const articlesAggregate = aggregateArticles(q, yearsFilter, status);
+
+  const { docs, totalPages } = await Article.aggregatePaginate(
+    articlesAggregate,
+    {
+      limit: 5,
+      page: page || 1,
+    }
+  );
+
+  return { docs, totalPages };
+}
+
 module.exports = {
   checkIfFavorited,
   identifyFavoriteArticles,
   getYearFilter,
   aggregateArticles,
+  getArticles,
 };
