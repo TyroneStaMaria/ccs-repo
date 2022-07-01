@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="/css/modal.css" />
 <link rel="stylesheet" href="/css/article-page.css" />
+<link rel="stylesheet" href="/css/forms.css" />
 <link rel="stylesheet" href="/css/citation.css" />
 
+{{>overlay}}
 <div class="modal">
   <div class="modal__content">
     <p id="modal-citation"></p>
@@ -88,6 +90,7 @@
   </div>
 </section>
 <script src="/js/modal.js"></script>
+<script src="/js/overlay.js"></script>
 <script src="/js/cite.js"></script>
 <script>
   citeArticle('{{article.citationInfo}}')
