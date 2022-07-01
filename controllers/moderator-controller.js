@@ -1,5 +1,9 @@
 const Article = require("../models/Article");
-const { getYearFilter, aggregateArticles } = require("../utils/helpers");
+const {
+  getYearFilter,
+  aggregateArticles,
+  getArticles,
+} = require("../utils/helpers");
 
 async function viewArticle(req, res) {
   try {
@@ -15,22 +19,12 @@ async function viewArticle(req, res) {
   }
 }
 
-async function searchArticles(req, res) {
+async function listArticles(req, res) {
   try {
     const { q, year, page } = req.query;
 
     const years = Array.isArray(year) ? year : [year];
-    const yearsFilter = getYearFilter(years);
-
-    const articlesAggregate = aggregateArticles(q, yearsFilter);
-
-    const { docs, totalPages } = await Article.aggregatePaginate(
-      articlesAggregate,
-      {
-        limit: 5,
-        page: page || 1,
-      }
-    );
+    const { docs, totalPages } = await getArticles(q, years, page);
 
     return res.render("moderator/article-list", {
       title: "Articles",
@@ -62,9 +56,19 @@ async function deleteArticle(req, res) {
   return res.status(200).json({ success: true });
 }
 
+async function searchArticles(req, res) {
+  const { q, year, page, status } = req.query;
+
+  const years = Array.isArray(year) ? year : [year];
+  const { docs, totalPages } = await getArticles(q, years, page, status);
+
+  return res.status(200).json({ articles: docs, totalPages, success: true });
+}
+
 module.exports = {
   viewArticle,
-  searchArticles,
+  listArticles,
   rejectOrApproveArticle,
   deleteArticle,
+  searchArticles,
 };

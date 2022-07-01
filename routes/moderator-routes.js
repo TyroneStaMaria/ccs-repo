@@ -10,6 +10,7 @@ const {
 
 const {
   viewArticle,
+  listArticles,
   searchArticles,
   rejectOrApproveArticle,
   deleteArticle,
@@ -17,15 +18,8 @@ const {
 
 router.get("/article/:id", [moderatorOnlyRoute], viewArticle);
 
+router.get("/articles/list", [moderatorOnlyRoute], listArticles);
 router.get("/articles/search", [moderatorOnlyRoute], searchArticles);
-router.get("/articles/get", [moderatorOnlyRoute], async (req, res) => {
-  const { q, year, page } = req.query;
-
-  const years = Array.isArray(year) ? year : [year];
-  const { docs, totalPages } = await getArticles(q, years, page, "pending");
-
-  return res.status(200).json({ articles: docs, totalPages, success: true });
-});
 router.get("/", [moderatorOnlyRoute], async (req, res) => {
   const { q, year, page } = req.query;
 

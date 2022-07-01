@@ -2,9 +2,9 @@ const hidden = document.getElementById("page");
 const pages = document.querySelectorAll(".pagination__btn");
 pages[0].classList.add("pagination__btn--active");
 let prevValue = hidden.value;
-async function search({ q, page }) {
+async function search(query) {
   const res = await fetch(
-    `/moderator/articles/get?${new URLSearchParams({ q, page })}`,
+    `/moderator/articles/search?${new URLSearchParams({ ...query })}`,
     {
       method: "GET",
       headers: {
@@ -34,7 +34,58 @@ function formDataToJson(formData) {
   return data;
 }
 
-async function renderTable(event, { articles, totalPages, success }) {
+function tableTemplates(article, status) {
+  const templates = {
+    pending: `
+    <tr id="${article._id}" data-title="${article.title}">
+      <td class="article-title">
+        <a href="/moderator/article/${article._id}">
+          ${article.title}
+        </a>
+      </td>
+      <td class="delete-article">
+        <button class="text-red reject" value="${article._id}">
+          <span class="material-symbols-outlined">
+            cancel
+          </span>
+        </button>
+      </td>
+      <td class="delete-article">
+        <button class="text-primary approve" value="${article._id}">
+          <span class="material-symbols-outlined">
+            check_circle
+          </span>
+        </button>
+      </td>
+    </tr>`,
+    approved: `
+    <tr id="${article._id}" data-title="${article.title}">
+      <td class="article-title">
+        <a href="/moderator/article/${article._id}">
+          ${article.title}
+        </a>
+      </td>
+      <td class="delete-article">
+        <button class="text-red remove" value="${article._id}">
+          <span class="material-symbols-outlined">
+            delete
+          </span>
+        </button>
+      </td>
+      <td>
+        <button class="button featured" value="${article._id}" data-featured="${
+      article.featured ? "featured" : ""
+    }">
+          ${article.featured ? "Remove from Featured" : "Add to Featured"} 
+        </button>
+      </td>
+    </tr>`,
+  };
+
+  return templates[status];
+}
+
+async function renderTable(event, status, { articles, totalPages, success }) {
   if (success) {
     const articleList = document.getElementById("articleList");
     articleList.innerHTML = "";
@@ -49,28 +100,7 @@ async function renderTable(event, { articles, totalPages, success }) {
     }
 
     articles.forEach((article) => {
-      const template = `
-      <tr id="${article._id}" data-title="${article.title}">
-        <td class="article-title">
-          <a href="/moderator/article/${article._id}">
-            ${article.title}
-          </a>
-        </td>
-        <td class="delete-article">
-          <button class="text-red reject" value="${article._id}">
-            <span class="material-symbols-outlined">
-              cancel
-            </span>
-          </button>
-        </td>
-        <td class="delete-article">
-          <button class="text-primary approve" value="${article._id}">
-            <span class="material-symbols-outlined">
-              check_circle
-            </span>
-          </button>
-        </td>
-      </tr>`;
+      const template = tableTemplates(article, status);
       articleList.insertAdjacentHTML("beforeend", template);
     });
     addEvents();
@@ -107,8 +137,7 @@ async function submitSearch(event) {
   const formData = new FormData(searchForm);
   const data = formDataToJson(formData);
   const results = await search(data);
-  console.log(results);
-  renderTable(event, { ...results });
+  renderTable(event, data.status, { ...results });
   renderPagination({ ...results });
 }
 

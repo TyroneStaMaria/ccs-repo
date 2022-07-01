@@ -4,19 +4,14 @@
 {{>modal buttonName='Delete' buttonColor='button--danger'}}
 
 <section class="search-section">
-  <form
-    id="searchForm"
-    name="search"
-    action="/moderator/articles/search"
-    method="GET"
-  >
+  <form id="searchForm">
     <input
       class="search-section__input"
       type="text"
-      id="searchQuery"
       placeholder="Search"
       name="q"
     />
+    <input type="hidden" name="status" value="approved">
   </form>
 </section>
 <section class="padded">
@@ -29,7 +24,7 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="articleList">
         {{#if articles}}
           {{#each articles}}
             <tr id="{{this._id}}" data-title="{{this.title}}">
@@ -60,19 +55,20 @@
       </tbody>
     </table>
   </div>
+  <input type="hidden" form="searchForm" name="page" value="1" id="page">
   <div class="pagination flex">
     {{#paginate totalPages}}
       <button
         class="pagination__btn"
-        form="searchForm"
-        name="page"
         value="{{this}}"
+        onclick="handlePagination(this);"
       >
         {{this}}
       </button>
     {{/paginate}}
   </div>
 </section>
-<script src="/js/articles.js"></script>
+{{!-- <script src="/js/articles.js"></script> --}}
 <script src="/js/modal.js"></script>
+<script src="/js/moderator-search.js"></script>
 <script src="/js/moderator.js"></script>
