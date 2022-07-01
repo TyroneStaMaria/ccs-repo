@@ -41,4 +41,14 @@ const articleValidators = [
   customValidator,
 ];
 
-module.exports = { loginValidators, registerValidators, articleValidators };
+const editAccountValidators = [
+  body("firstName").notEmpty().withMessage("First Name is required"),
+  body("lastName").notEmpty().withMessage("Last Name is required"),
+];
+
+module.exports = {
+  loginValidators,
+  registerValidators,
+  articleValidators,
+  editAccountValidators,
+};

@@ -17,25 +17,32 @@ function formDataToJson(formData) {
   return data;
 }
 
-async function submitForm(data, requestUrl, redirectUrl) {
-  const res = await fetch(requestUrl, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-    redirect: "follow",
-  });
-  const resData = await res.json();
-  if (resData.success === true) {
-    window.location.replace(redirectUrl);
-  } else {
-    showErrors(resData.errors);
+async function submitForm({ data, requestUrl, redirectUrl, method = "POST" }) {
+  try {
+    console.log(requestUrl);
+    const res = await fetch(requestUrl, {
+      method: method,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      redirect: "follow",
+    });
+    const resData = await res.json();
+    if (resData.success === true) {
+      window.location.replace(redirectUrl);
+    } else {
+      showErrors(resData.errors);
+    }
+  } catch (err) {
+    alert(err.message);
+    document.getElementById("submitBtn").disabled = false;
+    document.querySelector(".loader").style.display = "none";
   }
 }
 
-async function addArticle(data, requestUrl, redirectUrl) {
+async function addArticle({ data, requestUrl, redirectUrl }) {
   const res = await fetch(requestUrl, {
     method: "POST",
     headers: {
@@ -59,42 +66,52 @@ function resetErrors(formData) {
   }
 }
 
-const form =
-  document.getElementById("loginForm") ||
-  document.getElementById("registerForm") ||
-  document.getElementById("addArticleForm");
+document.addEventListener("DOMContentLoaded", () => {
+  const form =
+    document.getElementById("loginForm") ||
+    document.getElementById("registerForm") ||
+    document.getElementById("addArticleForm") ||
+    document.getElementById("editAccountForm");
 
-const formInfo = {
-  loginForm: {
-    requestUrl: "/users/login",
-    redirectUrl: "/",
-    submit: submitForm,
-  },
-  registerForm: {
-    requestUrl: "/users/register",
-    redirectUrl: "/login",
-    submit: submitForm,
-  },
-  addArticleForm: {
-    requestUrl: "/articles/add-article",
-    redirectUrl: "/add-article",
-    submit: addArticle,
-  },
-};
+  const formInfo = {
+    loginForm: {
+      requestUrl: "/users/login",
+      redirectUrl: "/",
+      submit: submitForm,
+    },
+    registerForm: {
+      requestUrl: "/users/register",
+      redirectUrl: "/login",
+      submit: submitForm,
+    },
+    addArticleForm: {
+      requestUrl: "/articles/add-article",
+      redirectUrl: "/add-article",
+      submit: addArticle,
+    },
+    editAccountForm: {
+      requestUrl: `/users/edit-account/${form.getAttribute("data-userId")}`,
+      redirectUrl: `/account/${form.getAttribute("data-userId")}`,
+      submit: submitForm,
+      method: "PUT",
+    },
+  };
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const requestInfo = formInfo[form.id];
-  const formData = new FormData(form);
-  resetErrors(formData);
-  const data =
-    form.id === "addArticleForm" ? formData : formDataToJson(formData);
+  console.log(formInfo.editAccountForm);
 
-  document.getElementById("submitBtn").disabled = true;
-  document.querySelector(".loader").style.display = "block";
-  await requestInfo.submit(
-    data,
-    requestInfo.requestUrl,
-    requestInfo.redirectUrl
-  );
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const requestInfo = formInfo[form.id];
+    const formData = new FormData(form);
+    resetErrors(formData);
+    const data =
+      form.id === "addArticleForm" ? formData : formDataToJson(formData);
+
+    document.getElementById("submitBtn").disabled = true;
+    document.querySelector(".loader").style.display = "block";
+    await requestInfo.submit({
+      data,
+      ...requestInfo,
+    });
+  });
 });

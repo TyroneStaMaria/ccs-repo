@@ -19,16 +19,16 @@ async function createUser(req, res) {
         "success_msg",
         "You have successfully registered. You can now Log in"
       );
-      res.status(200).send({ errors: [], success: true });
+      return res.status(200).send({ errors: [], success: true });
     } catch (err) {
-      res.status(409).send({
+      return res.status(409).send({
         errors: [{ param: "email", msg: "User already exists. Please Log in" }],
         success: false,
       });
     }
   } else {
     const messages = errors.array();
-    res.status(400).send({ errors: messages, success: false });
+    return res.status(400).send({ errors: messages, success: false });
   }
 }
 
@@ -105,6 +105,11 @@ async function toggleFavoriteArticles(req, res) {
 
 async function editAccount(req, res) {
   const currUserId = req.params.id;
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const messages = errors.array();
+    return res.status(400).send({ errors: messages, success: false });
+  }
 
   if (currUserId) {
     try {
@@ -113,13 +118,21 @@ async function editAccount(req, res) {
         { ...req.body },
         { new: true }
       );
+      return res.status(200).send({ errors: [], success: true });
     } catch (err) {
       console.log(err);
-    } finally {
-      return res.redirect("back");
+      return res.status(400).send({
+        errors: [
+          {
+            param: "email",
+            msg: "There seems to be an error in editing the user",
+          },
+        ],
+        success: false,
+      });
     }
   }
-  return res.redirect("/login");
+  // return res.redirect("/login");
 }
 
 async function deleteAccount(req, res) {

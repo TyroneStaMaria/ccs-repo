@@ -24,7 +24,7 @@
     <br />
     <h3>Edit Account</h3>
     <hr />
-    <form action="/users/edit-account/{{userId}}?_method=PUT" method="POST">
+    <form id="editAccountForm" data-userId="{{userId}}">
       <div class="flex form__items">
         <label for="email">Email Address</label>
         <input
@@ -35,6 +35,7 @@
           class="form__input"
           disabled
         />
+        <div class="message error-msg" id="firstName"></div>
         <label for="firstName">First Name</label>
         <input
           type="text"
@@ -43,6 +44,7 @@
           value="{{user.firstName}}"
           class="form__input"
         />
+        <div class="message error-msg" id="lastName"></div>
         <label for="lastName">Last Name</label>
         <input
           type="text"
@@ -51,7 +53,11 @@
           value="{{user.lastName}}"
           class="form__input"
         />
-        <button type="submit" class="button">Save Changes</button>
+        <div class="loader"></div>
+        <div class="flex submit__container">
+          <button class="button" id="submitBtn">Save Changes</button>
+          <div class="loader"></div>
+        </div>
       </div>
     </form>
     <div class="delete-account">
@@ -64,3 +70,4 @@
 </section>
 
 <script src="/js/account.js"></script>
+<script src="/js/forms.js"></script>
