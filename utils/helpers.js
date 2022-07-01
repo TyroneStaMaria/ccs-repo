@@ -37,11 +37,17 @@ function getYearFilter(years) {
 }
 
 function aggregateArticles(q, yearsFilter, status = "approved") {
+  // Article.createIndexes({ keywords: 1 });
   return Article.aggregate([
     {
       $match: {
         $and: [
-          { title: { $regex: new RegExp(q, "i") } },
+          {
+            $or: [
+              { title: { $regex: new RegExp(q, "i") } },
+              { keywords: { $regex: new RegExp(q, "i") } },
+            ],
+          },
           { $or: [...yearsFilter] },
           { status },
         ],
