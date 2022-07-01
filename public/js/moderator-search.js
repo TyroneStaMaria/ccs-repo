@@ -1,5 +1,6 @@
 const hidden = document.getElementById("page");
 const pages = document.querySelectorAll(".pagination__btn");
+const overlay = document.querySelector(".overlay");
 pages[0].classList.add("pagination__btn--active");
 let prevValue = hidden.value;
 async function search(query) {
@@ -136,9 +137,11 @@ async function submitSearch(event) {
   event.preventDefault();
   const formData = new FormData(searchForm);
   const data = formDataToJson(formData);
+  overlay.style.display = "block";
   const results = await search(data);
   renderTable(event, data.status, { ...results });
   renderPagination({ ...results });
+  overlay.style.display = "none";
 }
 
 const searchForm = document.getElementById("searchForm");

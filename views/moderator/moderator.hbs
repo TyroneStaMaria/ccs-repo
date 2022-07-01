@@ -1,7 +1,12 @@
 <link rel="stylesheet" href="/css/mod-articles.css" />
+<link rel="stylesheet" href="/css/forms.css" />
 <link rel="stylesheet" href="/css/modal.css" />
 
 {{>modal buttonName='Approve'}}
+<div class="overlay">
+  <div class="loader"></div>
+</div>
+
 <section class=" padded ">
   <div class="container">
 
@@ -23,6 +28,7 @@
 <section class="padded">
   <div class="container">
     <div class="container">
+
       <table>
         <thead>
           <tr>
@@ -32,6 +38,7 @@
           </tr>
         </thead>
         <tbody id="articleList">
+
           {{#if articles}}
             {{#each articles}}
               <tr id="{{this._id}}" data-title="{{this.title}}">
