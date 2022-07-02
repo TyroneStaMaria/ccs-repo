@@ -13,13 +13,20 @@
 
 <section class="search-section">
   <form id="searchForm">
-    <input
-      class="search-section__input"
-      type="text"
-      placeholder="Search"
-      name="q"
-    />
     <input type="hidden" name="status" value="pending">
+    <div class="search-section__container">
+      <input
+        class="search-section__input"
+        type="text"
+        placeholder="Search"
+        name="q"
+      />
+      <button type="submit">
+        <span class="material-symbols-outlined">
+          search
+        </span>
+      </button>
+    </div>
   </form>
 </section>
 <section class="padded">

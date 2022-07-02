@@ -3,10 +3,18 @@
   padding-bottom: 24px;
 }
 
+.search-section .search-section__container {
+  display: flex;
+  justify-content: center;
+}
+
 .search-section .search-section__input {
-  display: block;
-  margin: 0 auto;
   width: 30%;
+}
+
+.search-section button {
+  background-color: #c7c7c7;
+  padding: 3px;
 }
 
 .pagination {
