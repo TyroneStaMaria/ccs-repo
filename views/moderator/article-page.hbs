@@ -34,7 +34,7 @@
       </p>
       <p>
         <b>Citation:</b>
-        <span id="citation"></span>
+        <span id="citation">Loading...</span>
       </p>
     </div>
     <div class="flex buttons__container">
@@ -87,9 +87,7 @@
     {{/isApproved}}
   </div>
 </section>
-<script src="/js/modal.js"></script>
 <script src="/js/moderator.js"></script>
-<script src="/js/cite.js"></script>
 <script>
   const message = document.getElementById("citation");
   const result = new Cite('{{article.citationInfo}}');

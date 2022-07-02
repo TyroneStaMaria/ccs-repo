@@ -23,9 +23,15 @@ function confirmationMessage(message, { status, id, fn } = {}) {
   modifyModalButton(status, document.getElementById("deleteBtn"));
   document.getElementById("deleteBtn").onclick = async (event) => {
     const data = await fn({ status: status, id: id });
+    const location = "moderator/article";
     if (data.success) {
       closeModal();
-      submitSearch(event);
+
+      if (window.location.pathname.includes(location)) {
+        window.location.replace("/moderator");
+      } else {
+        submitSearch(event);
+      }
     }
   };
   document.getElementById("cancelBtn").onclick = () => {
@@ -86,21 +92,28 @@ function addEvents() {
 
   featured.forEach((btn) => {
     btn.addEventListener("click", async (event) => {
-      const res = await fetch(`/articles/toggle-featured/${btn.value}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        if (btn.getAttribute("data-featured")) {
-          btn.innerHTML = "Add to Featured";
-          btn.setAttribute("data-featured", "");
+      try {
+        showOverlay();
+        const res = await fetch(`/articles/toggle-featured/${btn.value}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await res.json();
+        if (data.success) {
+          if (btn.getAttribute("data-featured")) {
+            btn.innerHTML = "Add to Featured";
+            btn.setAttribute("data-featured", "");
+            return;
+          }
+          btn.innerHTML = "Remove from Featured";
+          btn.setAttribute("data-featured", "featured");
           return;
         }
-        btn.innerHTML = "Remove from Featured";
-        btn.setAttribute("data-featured", "featured");
-        return;
+      } catch (err) {
+        console.log(err);
+        alert(err);
+      } finally {
+        hideOverlay();
       }
     });
   });

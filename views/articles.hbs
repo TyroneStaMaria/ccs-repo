@@ -1,30 +1,7 @@
-<link rel="stylesheet" href="/css/modal.css" />
 <link rel="stylesheet" href="/css/articles.css" />
-<link rel="stylesheet" href="/css/forms.css" />
-<link rel="stylesheet" href="/css/citation.css" />
 
 {{>overlay}}
-<div class="modal">
-  <div class="modal__content">
-    <p id="modal-citation">Loading...</p>
-    <input type="text" name="citation" id="citation" hidden />
-    <button
-      class="copy-citation button button--outline"
-      onclick="copyCitation()"
-      id="copyBtn"
-    >
-      <span class="material-symbols-outlined">
-        content_copy
-      </span>
-      Copy Citation
-    </button>
-    <div class="flex">
-      <button class="button" id="cancelBtn" onclick="closeModal()">
-        Close
-      </button>
-    </div>
-  </div>
-</div>
+{{>citation-modal}}
 <section class="search-section bg-gray">
   <form id="searchForm" name="search" action="/articles/search" method="GET">
     <input class="search-section__input" type="text" id="searchQuery" placeholder="Search" name="q" />
@@ -67,6 +44,3 @@
   </div>
 </section>
 <script src="/js/articles.js"></script>
-<script src="/js/overlay.js"></script>
-<script src="/js/modal.js"></script>
-<script src="/js/cite.js"></script>
