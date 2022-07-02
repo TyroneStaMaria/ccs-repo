@@ -4,7 +4,14 @@
 {{>citation-modal}}
 <section class="search-section bg-gray">
   <form id="searchForm" name="search" action="/articles/search" method="GET">
-    <input class="search-section__input" type="text" id="searchQuery" placeholder="Search" name="q" />
+    <div class="search-section__container">
+      <input class="search-section__input" type="text" id="searchQuery" placeholder="Search" name="q" />
+      <button type="submit">
+        <span class="material-symbols-outlined">
+          search
+        </span>
+      </button>
+    </div>
   </form>
 </section>
 <section class="padded">
