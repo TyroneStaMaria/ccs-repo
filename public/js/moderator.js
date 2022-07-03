@@ -23,7 +23,7 @@ function confirmationMessage(message, { status, id, fn } = {}) {
   modifyModalButton(status, document.getElementById("deleteBtn"));
   document.getElementById("deleteBtn").onclick = async (event) => {
     const data = await fn({ status: status, id: id });
-    const location = "moderator/article";
+    const location = "moderator/article/";
     if (data.success) {
       closeModal();
 
