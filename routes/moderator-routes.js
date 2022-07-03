@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { moderatorOnlyRoute } = require("../middleware/routeAuthentication");
+const {
+  moderatorOnlyRoute,
+  requireLogin,
+} = require("../middleware/routeAuthentication");
 const Article = require("../models/Article");
 const {
   getYearFilter,
@@ -16,11 +19,15 @@ const {
   deleteArticle,
 } = require("../controllers/moderator-controller");
 
-router.get("/article/:id", [moderatorOnlyRoute], viewArticle);
+router.get("/article/:id", [requireLogin, moderatorOnlyRoute], viewArticle);
 
-router.get("/articles/list", [moderatorOnlyRoute], listArticles);
-router.get("/articles/search", [moderatorOnlyRoute], searchArticles);
-router.get("/", [moderatorOnlyRoute], async (req, res) => {
+router.get("/articles/list", [requireLogin, moderatorOnlyRoute], listArticles);
+router.get(
+  "/articles/search",
+  [requireLogin, moderatorOnlyRoute],
+  searchArticles
+);
+router.get("/", [requireLogin, moderatorOnlyRoute], async (req, res) => {
   const { q, year, page } = req.query;
 
   const years = Array.isArray(year) ? year : [year];

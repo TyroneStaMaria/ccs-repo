@@ -49,7 +49,7 @@ router.get("/article/:id", [userOnlyRoute], async (req, res) => {
   return res.render("article-page", { title: "Article", article: article[0] });
 });
 
-router.get("/favorites", [userOnlyRoute], async (req, res) => {
+router.get("/favorites", [requireLogin, userOnlyRoute], async (req, res) => {
   const favorites = req.session.user.favorites;
   return res.render("favorites", { title: "Favorites", favorites });
 });
