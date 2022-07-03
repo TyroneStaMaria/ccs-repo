@@ -35,6 +35,13 @@ app.use(
     cookie: { maxAge: 1000 * 60 * 60 * 24 }, //TODO: add secure:true on deployment
   })
 );
+app.use((req, res, next) => {
+  res.set(
+    "Cache-Control",
+    "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0"
+  );
+  next();
+});
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.error_msg = req.flash("error_msg");
