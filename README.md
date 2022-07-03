@@ -12,7 +12,7 @@ Here are the details of example accounts. If you want to use another `user` acco
 
 | Role      | Email                       | Password |
 | --------- | --------------------------- | -------- |
-| Moderator | tyrone_stamaria@dlsu.edu.ph | 123456   |
+| Moderator | mod@mod.com                 | 123456   |
 | User      | tyrone.stamaria35@gmail.com | 123456   |
 
 ### Features
