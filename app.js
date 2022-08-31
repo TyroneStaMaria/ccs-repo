@@ -13,7 +13,7 @@ const userRoutes = require("./routes/user-routes");
 const moderatorRoutes = require("./routes/moderator-routes");
 const mongoose = require("mongoose");
 const hbsHelpers = require("./utils/hbsHelpers");
-
+// TEST COMMIT
 const hbs = exphbs.create({
   extname: "hbs",
   defaultLayout: "main",
